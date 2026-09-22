@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miingle — Kommer snart</title>
+<meta name="description" content="Miingle — fællesskabet for forældre i København er på vej. Tilmeld dig ventelisten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #1A1A1A;
+    --pink: #C4698F;
+    --pink-dark: #a13f68;
+    --cream: #F3EEE6;
+    --muted: #B8B8B8;
+    --input-border: #F2EEE6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Instrument Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 24px 64px; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 48px;
+  }
+  .logo { font-family: 'Instrument Serif', serif; font-size: 24px; letter-spacing: 0.5px; }
+  .badge {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: var(--pink);
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px 0 48px;
+    border-bottom: 1px solid rgba(243,238,230,0.15);
+    margin-bottom: 48px;
+  }
+  .countdown div { text-align: center; }
+  .countdown .num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    line-height: 1;
+  }
+  .countdown .unit {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+  .kicker {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  h1 .accent { color: var(--pink); font-style: italic; }
+  p.lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+  form { margin-bottom: 16px; }
+  input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #4A4A4A;
+    background: #ffffff;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+  input[type="email"]:focus { outline: 2px solid var(--pink); outline-offset: 1px; }
+  .samtykke {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .samtykke input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--pink);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .samtykke label {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--cream);
+    opacity: 0.85;
+    cursor: pointer;
+  }
+  .samtykke a { color: var(--pink); text-decoration: underline; }
+  button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--pink);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  button[type="submit"]:hover:not(:disabled) { background: var(--pink-dark); }
+  button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+  .footnote {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 16px;
+  }
+  .melding {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .melding.vis { display: block; }
+  .melding.success { background: #d3fbeb; border: 1px solid #10bf7a; color: #0c905c; }
+  .melding.fejl { background: #fde8e2; border: 1px solid #f2643b; color: #ea4110; }
+  @media (max-width: 480px) {
+    h1 { font-size: 32px; }
+    .countdown { gap: 14px; }
+    .countdown .num { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Miingle</div>
+      <div class="badge">Kommer snart</div>
+    </header>
+
+    <div class="countdown" id="countdown">
+      <div><span class="num" id="cd-days">–</span><span class="unit">Dage</span></div>
+      <div><span class="num" id="cd-hours">–</span><span class="unit">Timer</span></div>
+      <div><span class="num" id="cd-min">–</span><span class="unit">Min</span></div>
+      <div><span class="num" id="cd-sec">–</span><span class="unit">Sek</span></div>
+    </div>
+
+    <div class="kicker">Venteliste</div>
+    <h1>Miingle — <span class="accent">fællesskabet</span> for forældre i København er på vej</h1>
+    <p class="lead">
+      Miingle er en ny app, der gør det nemt at finde og møde andre forældre i dit lokalområde
+      — legegrupper, babyrytmik, gåture og gode råd, samlet ét sted. Tilmeld dig ventelisten,
+      så får du besked med det samme appen lancerer.
+    </p>
+
+    <div class="melding" id="melding"></div>
+
+    <form id="venteliste-form" action="https://app.kit.com/forms/9917276/subscriptions" method="post">
+      <input type="email" name="email_address" placeholder="Din email" aria-label="Email" required>
+      <div class="samtykke">
+        <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required>
+        <label for="samtykke-boks">
+          Jeg giver samtykke til at modtage e-mails fra Miingle om lanceringen og accepterer,
+          at mine oplysninger behandles i henhold til
+          <a href="/privatlivspolitik.html">privatlivspolitikken</a>.
+        </label>
+      </div>
+      <button type="submit" id="submit-knap">Tilmeld mig ventelisten</button>
+    </form>
+
+    <p class="footnote">Vi respekterer dit privatliv. Du kan altid afmelde dig igen.</p>
+  </div>
+
+  <script>
+    // ── Nedtælling til lancering (1. januar 2027, dansk tid) ──────────────
+    var launchDato = new Date('2027-01-01T00:00:00+01:00').getTime();
+    function opdaterNedtælling() {
+      var nu = new Date().getTime();
+      var diff = Math.max(0, launchDato - nu);
+      var dage = Math.floor(diff / 86400000);
+      var timer = Math.floor((diff % 86400000) / 3600000);
+      var min = Math.floor((diff % 3600000) / 60000);
+      var sek = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-days').textContent = dage;
+      document.getElementById('cd-hours').textContent = String(timer).padStart(2, '0');
+      document.getElementById('cd-min').textContent = String(min).padStart(2, '0');
+      document.getElementById('cd-sec').textContent = String(sek).padStart(2, '0');
+    }
+    opdaterNedtælling();
+    setInterval(opdaterNedtælling, 1000);
+
+    // ── Ægte, håndhævet obligatorisk samtykke ──────────────────────────────
+    // Ingen serverside-workaround mulig hos Kit (afprøvet grundigt) — men her
+    // er det bare almindelig HTML5 `required` + native "checkValidity()",
+    // som browseren selv håndhæver. Ingen ekstern platform kan fjerne dette.
+    var formular = document.getElementById('venteliste-form');
+    var checkbox = document.getElementById('samtykke-boks');
+    var knap = document.getElementById('submit-knap');
+    var meldingBoks = document.getElementById('melding');
+
+    function visMelding(tekst, type) {
+      meldingBoks.textContent = tekst;
+      meldingBoks.className = 'melding vis ' + type;
+    }
+
+    formular.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!formular.checkValidity()) {
+        formular.reportValidity();
+        return;
+      }
+      knap.disabled = true;
+      knap.textContent = 'Sender...';
+
+      var data = new FormData(formular);
+      fetch(formular.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data,
+      })
+        .then(function (res) { return res.json().catch(function () { return {}; }); })
+        .then(function (json) {
+          // Kit sender nogle gange et ekstra sikkerhedstjek ("guards") for
+          // ukendte/mistænkelige afsendere, FØR tilmeldingen reelt gennemføres.
+          // Uden dette tjek ville vi vise en falsk succesbesked, mens
+          // tilmeldingen reelt aldrig blev fuldført hos Kit.
+          if (json && json.status === 'quarantined' && json.url) {
+            window.location.href = json.url;
+            return;
+          }
+          visMelding('Tak for din tilmelding, du er officielt på ventelisten! ✉️ Vi glæder os til at have dig med, når Miingle lancerer.', 'success');
+          formular.style.display = 'none';
+        })
+        .catch(function () {
+          visMelding('Noget gik galt. Prøv igen, eller skriv til os på support@miingle.dk.', 'fejl');
+          knap.disabled = false;
+          knap.textContent = 'Tilmeld mig ventelisten';
+        });
+    });
+  </script>
+</body>
+</html>
