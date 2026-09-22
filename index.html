@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Miingle — Kommer snart</title>
-<meta name="description" content="Miingle — fællesskabet for forældre i København er på vej. Tilmeld dig ventelisten.">
+<meta name="description" content="Miingle — fællesskabet for forældre i København er på vej. Tilmeld dig ventelisten og få besked med det samme vi lancerer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
@@ -13,6 +13,7 @@
     --bg: #1A1A1A;
     --pink: #C4698F;
     --pink-dark: #a13f68;
+    --pink-soft: #FEF0F4;
     --cream: #F3EEE6;
     --muted: #B8B8B8;
     --input-border: #F2EEE6;
@@ -26,37 +27,45 @@
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 24px 64px; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 24px 80px; }
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 48px;
+    gap: 12px;
+    padding-bottom: 40px;
   }
-  .logo { font-family: 'Instrument Serif', serif; font-size: 24px; letter-spacing: 0.5px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand svg { display: block; flex-shrink: 0; }
+  .logo { font-family: 'Instrument Serif', serif; font-size: 22px; letter-spacing: 0.3px; }
   .badge {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.1px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     color: var(--pink);
+    background: rgba(196,105,143,0.12);
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
   }
   .countdown {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    padding: 24px 0 48px;
-    border-bottom: 1px solid rgba(243,238,230,0.15);
-    margin-bottom: 48px;
+    gap: clamp(12px, 4vw, 28px);
+    padding: 20px 0 40px;
+    border-bottom: 1px solid rgba(243,238,230,0.12);
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease-out;
   }
   .countdown div { text-align: center; }
   .countdown .num {
     font-family: 'Instrument Serif', serif;
-    font-size: 40px;
+    font-size: clamp(26px, 7vw, 40px);
     line-height: 1;
   }
   .countdown .unit {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--muted);
@@ -66,37 +75,62 @@
   .kicker {
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
+    color: var(--pink);
+    margin-bottom: 14px;
   }
   h1 {
     font-family: 'Instrument Serif', serif;
     font-weight: 400;
-    font-size: 40px;
-    line-height: 1.2;
+    font-size: clamp(30px, 6vw, 42px);
+    line-height: 1.18;
     margin-bottom: 20px;
+    animation: fadeUp 0.6s ease-out 0.1s both;
   }
   h1 .accent { color: var(--pink); font-style: italic; }
   p.lead {
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--cream);
     opacity: 0.85;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     max-width: 520px;
+    animation: fadeUp 0.6s ease-out 0.15s both;
   }
-  form { margin-bottom: 16px; }
+  .social-proof[hidden] { display: none; }
+  .social-proof {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .social-proof .dots { display: flex; }
+  .social-proof .dots span {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--pink-soft); border: 2px solid var(--bg);
+    margin-left: -8px; display: inline-block;
+  }
+  .social-proof .dots span:first-child { margin-left: 0; }
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(243,238,230,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    animation: fadeUp 0.6s ease-out 0.2s both;
+  }
+  form { margin-bottom: 4px; }
   input[type="email"] {
     width: 100%;
-    padding: 14px 16px;
+    padding: 15px 16px;
     font-size: 15px;
     font-family: inherit;
     color: #4A4A4A;
     background: #ffffff;
     border: 2px solid var(--input-border);
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 14px;
   }
   input[type="email"]:focus { outline: 2px solid var(--pink); outline-offset: 1px; }
@@ -124,48 +158,135 @@
   .samtykke a { color: var(--pink); text-decoration: underline; }
   button[type="submit"] {
     width: 100%;
-    padding: 16px;
+    padding: 17px;
     font-family: inherit;
     font-size: 15px;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    letter-spacing: 0.4px;
     color: #fff;
     background: var(--pink);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background 0.15s, opacity 0.15s;
+    transition: background 0.15s, opacity 0.15s, transform 0.1s;
   }
   button[type="submit"]:hover:not(:disabled) { background: var(--pink-dark); }
+  button[type="submit"]:active:not(:disabled) { transform: scale(0.99); }
   button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
-  .footnote {
-    text-align: center;
-    font-size: 13px;
+  .trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12.5px;
     color: var(--muted);
-    margin-top: 16px;
+    margin-top: 14px;
   }
   .melding {
-    padding: 14px 16px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    line-height: 1.5;
     margin-bottom: 16px;
     display: none;
   }
   .melding.vis { display: block; }
   .melding.success { background: #d3fbeb; border: 1px solid #10bf7a; color: #0c905c; }
   .melding.fejl { background: #fde8e2; border: 1px solid #f2643b; color: #ea4110; }
+  .del-besked {
+    display: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(243,238,230,0.12);
+  }
+  .del-besked.vis { display: block; }
+  .del-besked p { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+  .del-knap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px solid rgba(243,238,230,0.25);
+    color: var(--cream);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .del-knap:hover { border-color: var(--pink); }
+
+  .faq { margin-top: 56px; }
+  .faq h2 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(243,238,230,0.1);
+    padding: 16px 0;
+  }
+  .faq-item summary {
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--pink);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 10px;
+    max-width: 520px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 56px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   @media (max-width: 480px) {
-    h1 { font-size: 32px; }
-    .countdown { gap: 14px; }
-    .countdown .num { font-size: 30px; }
+    header { flex-wrap: wrap; }
+    .card { padding: 22px 18px; }
   }
 </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="logo">Miingle</div>
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="0" y="0" width="100" height="100" rx="22" ry="22" fill="#FEF0F4"/>
+          <path d="M 40 10 C 57 2 76 16 73 42 C 70 62 63 75 55 81 C 48 87 38 87 34 82 C 30 77 34 67 39 59 C 44 51 46 42 45 33 C 44 24 41 17 40 10 Z" fill="#C4698F"/>
+          <circle cx="61" cy="52" r="10" fill="#E8A090"/>
+          <path d="M 52 61 C 50 72 54 83 63 84 C 72 85 77 76 75 67 C 73 58 66 54 61 56 C 55 58 53 60 52 61 Z" fill="#E8A090"/>
+          <path d="M 21 34 C 12 46 10 63 17 75 C 22 85 36 89 46 85 C 53 81 55 72 53 62 C 51 54 45 49 40 46 C 35 42 28 38 21 34 Z" fill="#C4698F"/>
+          <circle cx="33" cy="23" r="13" fill="#C4698F"/>
+        </svg>
+        <div class="logo">Miingle</div>
+      </div>
       <div class="badge">Kommer snart</div>
     </header>
 
@@ -176,30 +297,64 @@
       <div><span class="num" id="cd-sec">–</span><span class="unit">Sek</span></div>
     </div>
 
-    <div class="kicker">Venteliste</div>
-    <h1>Miingle — <span class="accent">fællesskabet</span> for forældre i København er på vej</h1>
+    <div class="kicker">Du skal ikke være alene som ny forælder</div>
+    <h1>Find dine <span class="accent">forældre-venner</span> i København, før du får brug for dem</h1>
     <p class="lead">
-      Miingle er en ny app, der gør det nemt at finde og møde andre forældre i dit lokalområde
-      — legegrupper, babyrytmik, gåture og gode råd, samlet ét sted. Tilmeld dig ventelisten,
-      så får du besked med det samme appen lancerer.
+      Miingle gør det nemt at finde og møde andre forældre i dit lokalområde — legegrupper,
+      babyrytmik, gåture og gode råd, samlet ét sted. Skriv dig op til ventelisten,
+      så får du besked, i det øjeblik appen lancerer.
     </p>
 
-    <div class="melding" id="melding"></div>
+    <div class="social-proof" id="social-proof" hidden>
+      <div class="dots"><span></span><span></span><span></span></div>
+      <span id="social-proof-tekst"></span>
+    </div>
 
-    <form id="venteliste-form" action="https://app.kit.com/forms/9917276/subscriptions" method="post">
-      <input type="email" name="email_address" placeholder="Din email" aria-label="Email" required>
-      <div class="samtykke">
-        <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required>
-        <label for="samtykke-boks">
-          Jeg giver samtykke til at modtage e-mails fra Miingle om lanceringen og accepterer,
-          at mine oplysninger behandles i henhold til
-          <a href="/privatlivspolitik.html">privatlivspolitikken</a>.
-        </label>
+    <div class="card">
+      <div class="melding" id="melding"></div>
+
+      <form id="venteliste-form" action="https://app.kit.com/forms/9917276/subscriptions" method="post">
+        <input type="email" name="email_address" placeholder="Din email" aria-label="Email" required>
+        <div class="samtykke">
+          <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required>
+          <label for="samtykke-boks">
+            Jeg giver samtykke til at modtage e-mails fra Miingle om lanceringen og accepterer,
+            at mine oplysninger behandles i henhold til
+            <a href="/privatlivspolitik.html">privatlivspolitikken</a>.
+          </label>
+        </div>
+        <button type="submit" id="submit-knap">Skriv mig op til ventelisten</button>
+      </form>
+
+      <div class="trust-row">🔒 Ingen spam. Kun besked når vi lancerer. Afmeld når som helst.</div>
+
+      <div class="del-besked" id="del-besked">
+        <p>Kender du en anden kommende eller ny forælder? Del linket, så I kan starte sammen fra dag ét.</p>
+        <button class="del-knap" id="kopier-link-knap" type="button">🔗 Kopiér link</button>
       </div>
-      <button type="submit" id="submit-knap">Tilmeld mig ventelisten</button>
-    </form>
+    </div>
 
-    <p class="footnote">Vi respekterer dit privatliv. Du kan altid afmelde dig igen.</p>
+    <div class="faq">
+      <h2>Gode spørgsmål</h2>
+      <details class="faq-item">
+        <summary>Hvornår lancerer appen?</summary>
+        <p>Vi sigter mod 1. januar. Du er den første til at høre om det, når det sker — helt uafhængigt af hvor mange andre der har tilmeldt sig.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Koster det noget at skrive sig op?</summary>
+        <p>Nej, det er helt gratis at stå på ventelisten. Du forpligter dig ikke til noget.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Hvad får jeg ud af at tilmelde mig nu frem for senere?</summary>
+        <p>Du får besked med det samme appen er klar, i stedet for at opdage den tilfældigt senere. Alle på ventelisten får adgang samtidig ved lancering.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kan jeg altid afmelde mig igen?</summary>
+        <p>Ja, med ét klik i enhver email vi sender. Ingen spørgsmål, ingen besvær.</p>
+      </details>
+    </div>
+
+    <footer>© Miingle ApS · <a href="/privatlivspolitik.html" style="color:inherit">Privatlivspolitik</a></footer>
   </div>
 
   <script>
@@ -219,6 +374,14 @@
     }
     opdaterNedtælling();
     setInterval(opdaterNedtælling, 1000);
+
+    // ── Ægte social proof — vises KUN hvis et rigtigt tal er sat herunder.
+    // Ingen opdigtede tal. Sæt ANTAL_TILMELDT til et rigtigt tal fra Kit for at vise den.
+    var ANTAL_TILMELDT = null; // fx 214 — sæt til et rigtigt tal, eller lad stå null for at skjule
+    if (ANTAL_TILMELDT && ANTAL_TILMELDT > 0) {
+      document.getElementById('social-proof-tekst').textContent = ANTAL_TILMELDT + ' forældre er allerede skrevet op';
+      document.getElementById('social-proof').hidden = false;
+    }
 
     // ── Ægte, håndhævet obligatorisk samtykke ──────────────────────────────
     // Ingen serverside-workaround mulig hos Kit (afprøvet grundigt) — men her
@@ -261,12 +424,22 @@
           }
           visMelding('Tak for din tilmelding, du er officielt på ventelisten! ✉️ Vi glæder os til at have dig med, når Miingle lancerer.', 'success');
           formular.style.display = 'none';
+          document.querySelector('.trust-row').style.display = 'none';
+          document.getElementById('del-besked').classList.add('vis');
         })
         .catch(function () {
           visMelding('Noget gik galt. Prøv igen, eller skriv til os på support@miingle.dk.', 'fejl');
           knap.disabled = false;
-          knap.textContent = 'Tilmeld mig ventelisten';
+          knap.textContent = 'Skriv mig op til ventelisten';
         });
+    });
+
+    var kopierKnap = document.getElementById('kopier-link-knap');
+    kopierKnap.addEventListener('click', function () {
+      navigator.clipboard.writeText(window.location.origin + '/').then(function () {
+        kopierKnap.textContent = '✅ Link kopieret!';
+        setTimeout(function () { kopierKnap.textContent = '🔗 Kopiér link'; }, 2000);
+      });
     });
   </script>
 </body>
