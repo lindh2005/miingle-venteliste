@@ -49,11 +49,19 @@
     border-radius: 20px;
     white-space: nowrap;
   }
+  .lancerer-dato {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: var(--muted);
+    padding-top: 16px;
+  }
   .countdown {
     display: flex;
     justify-content: center;
     gap: clamp(12px, 4vw, 28px);
-    padding: 20px 0 40px;
+    padding: 10px 0 40px;
     border-bottom: 1px solid var(--input-border);
     margin-bottom: 40px;
     animation: fadeUp 0.6s ease-out;
@@ -386,6 +394,7 @@
       <div class="badge">Kommer snart</div>
     </header>
 
+    <div class="lancerer-dato">Lancerer 1. januar 2027</div>
     <div class="countdown" id="countdown">
       <div><span class="num" id="cd-days">–</span><span class="unit">Dage</span></div>
       <div><span class="num" id="cd-hours">–</span><span class="unit">Timer</span></div>
@@ -514,7 +523,7 @@
     </div>
 
     <div class="faq">
-      <h2>Gode spørgsmål</h2>
+      <h2>Ofte stillede spørgsmål</h2>
       <details class="faq-item">
         <summary>Hvornår lancerer appen?</summary>
         <p>Vi sigter mod 1. januar. Du er den første til at høre om det, når det sker — helt uafhængigt af hvor mange andre der har tilmeldt sig.</p>
