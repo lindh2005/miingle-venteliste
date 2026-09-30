@@ -125,11 +125,29 @@
     text-align: center;
     margin-bottom: 16px;
   }
-  .partner-chips { display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 8px; overflow-x: auto; padding: 2px; }
+  .partner-track-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+  }
+  .partner-track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: max-content;
+    animation: partner-scroll 20s linear infinite;
+  }
+  @keyframes partner-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .partner-track { animation: none; }
+  }
   .partner-chip {
     background: #ffffff;
     border-radius: 10px;
-    padding: 8px 12px;
+    padding: 8px 14px;
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -405,15 +423,22 @@
       </details>
     </div>
 
-    <!-- KUN LOKAL PREVIEW — IKKE bekræftede partnere, aldrig pushet til GitHub -->
     <div class="partnere">
       <div class="label">I samarbejde med</div>
-      <div class="partner-chips">
-        <div class="partner-chip"><img src="babysam.png" alt="BabySam" height="28"></div>
-        <div class="partner-chip"><img src="dulille.png" alt="Dulille" height="28"></div>
-        <div class="partner-chip"><img src="kidsworld.png" alt="Kids-World" height="28"></div>
-        <div class="partner-chip"><img src="huttelihut.png" alt="Huttelihut" height="28"></div>
-        <div class="partner-chip"><img src="jollyroom.png" alt="Jollyroom" height="28"></div>
+      <div class="partner-track-wrap">
+        <div class="partner-track">
+          <div class="partner-chip"><img src="babysam.png" alt="BabySam" height="28"></div>
+          <div class="partner-chip"><img src="dulille.png" alt="Dulille" height="28"></div>
+          <div class="partner-chip"><img src="kidsworld.png" alt="Kids-World" height="28"></div>
+          <div class="partner-chip"><img src="huttelihut.png" alt="Huttelihut" height="28"></div>
+          <div class="partner-chip"><img src="jollyroom.png" alt="Jollyroom" height="28"></div>
+          <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
+          <div class="partner-chip" aria-hidden="true"><img src="babysam.png" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="dulille.png" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="kidsworld.png" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="huttelihut.png" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="jollyroom.png" alt="" height="28"></div>
+        </div>
       </div>
     </div>
 
