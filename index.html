@@ -114,6 +114,49 @@
     margin-left: -8px; display: inline-block;
   }
   .social-proof .dots span:first-child { margin-left: 0; }
+
+  .partnere { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(243,238,230,0.1); }
+  .partnere .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .partner-chips { display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 8px; overflow-x: auto; padding: 2px; }
+  .partner-chip {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .partner-chip img { display: block; }
+
+  .gaver {
+    background: linear-gradient(180deg, rgba(196,105,143,0.10) 0%, rgba(196,105,143,0.03) 100%);
+    border: 1px solid rgba(196,105,143,0.25);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-top: 28px;
+  }
+  .gaver-top { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px; }
+  .gaver-ikon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: rgba(196,105,143,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px; font-size: 22px;
+  }
+  .gaver-top h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 22px; margin-bottom: 6px; }
+  .gaver-top p { font-size: 13.5px; color: var(--muted); max-width: 380px; line-height: 1.55; }
+  .gave-punkter { display: flex; flex-direction: column; gap: 13px; margin-bottom: 18px; }
+  .gave-punkt { display: flex; gap: 11px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #D8D0D2; }
+  .gave-punkt b { color: var(--cream); }
+  .gdpr-linje { text-align: center; font-size: 11.5px; color: #8A7580; font-style: italic; line-height: 1.6; }
+
   .card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(243,238,230,0.1);
@@ -327,6 +370,21 @@
       </div>
     </div>
 
+    <div class="gaver">
+      <div class="gaver-top">
+        <div class="gaver-ikon">🎁</div>
+        <h3>Vind gaver fra vores samarbejdspartnere</h3>
+        <p>Når du skriver dig op til ventelisten, er du automatisk med i lodtrækningen — helt gratis.</p>
+      </div>
+      <div class="gave-punkter">
+        <div class="gave-punkt">👥&nbsp; <span><b>Hvem kan deltage:</b> Alle tilmeldt ventelisten med en gyldig emailadresse</span></div>
+        <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. januar 2027, samme dag Miingle lanceres</span></div>
+        <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes direkte på mailadressen de skrev sig op med</span></div>
+        <div class="gave-punkt">🎯&nbsp; <span><b>Én gave pr. person:</b> Man kan maksimalt vinde én gave, uanset puljens størrelse</span></div>
+      </div>
+      <div class="gdpr-linje">Din emailadresse bruges udelukkende til Miingle og deles ikke med vores samarbejdspartnere eller andre tredjeparter.</div>
+    </div>
+
     <div class="faq">
       <h2>Gode spørgsmål</h2>
       <details class="faq-item">
@@ -339,12 +397,24 @@
       </details>
       <details class="faq-item">
         <summary>Hvad får jeg ud af at tilmelde mig nu frem for senere?</summary>
-        <p>Du får besked med det samme appen er klar, i stedet for at opdage den tilfældigt senere. Alle på ventelisten får adgang samtidig ved lancering.</p>
+        <p>Du får en mail 1 måned før, 1 uge før, dagen før og på selve dagen appen lancerer — og du er automatisk med i lodtrækningen om gaver fra vores samarbejdspartnere.</p>
       </details>
       <details class="faq-item">
         <summary>Kan jeg altid afmelde mig igen?</summary>
         <p>Ja, med ét klik i enhver email vi sender. Ingen spørgsmål, ingen besvær.</p>
       </details>
+    </div>
+
+    <!-- KUN LOKAL PREVIEW — IKKE bekræftede partnere, aldrig pushet til GitHub -->
+    <div class="partnere">
+      <div class="label">I samarbejde med</div>
+      <div class="partner-chips">
+        <div class="partner-chip"><img src="babysam.png" alt="BabySam" height="28"></div>
+        <div class="partner-chip"><img src="dulille.png" alt="Dulille" height="28"></div>
+        <div class="partner-chip"><img src="kidsworld.png" alt="Kids-World" height="28"></div>
+        <div class="partner-chip"><img src="huttelihut.png" alt="Huttelihut" height="28"></div>
+        <div class="partner-chip"><img src="jollyroom.png" alt="Jollyroom" height="28"></div>
+      </div>
     </div>
 
     <footer>© Miingle ApS · <a href="privatlivspolitik.html" style="color:inherit">Privatlivspolitik</a></footer>
