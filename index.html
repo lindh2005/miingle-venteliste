@@ -10,13 +10,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root {
-    --bg: #1A1A1A;
+    --bg: #FAF6F8;
     --pink: #C4698F;
     --pink-dark: #a13f68;
     --pink-soft: #FEF0F4;
-    --cream: #F3EEE6;
-    --muted: #B8B8B8;
-    --input-border: #F2EEE6;
+    --cream: #2D2D2D;
+    --muted: #8A8A8A;
+    --input-border: #F0E6EA;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -54,7 +54,7 @@
     justify-content: center;
     gap: clamp(12px, 4vw, 28px);
     padding: 20px 0 40px;
-    border-bottom: 1px solid rgba(243,238,230,0.12);
+    border-bottom: 1px solid var(--input-border);
     margin-bottom: 40px;
     animation: fadeUp 0.6s ease-out;
   }
@@ -115,7 +115,7 @@
   }
   .social-proof .dots span:first-child { margin-left: 0; }
 
-  .partnere { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(243,238,230,0.1); }
+  .partnere { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--input-border); }
   .partnere .label {
     font-size: 11px;
     font-weight: 700;
@@ -151,12 +151,13 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(196,105,143,0.10);
   }
   .partner-chip img { display: block; }
 
   .gaver {
-    background: linear-gradient(180deg, rgba(196,105,143,0.10) 0%, rgba(196,105,143,0.03) 100%);
-    border: 1px solid rgba(196,105,143,0.25);
+    background: linear-gradient(180deg, rgba(196,105,143,0.14) 0%, rgba(196,105,143,0.04) 100%);
+    border: 1px solid rgba(196,105,143,0.22);
     border-radius: 16px;
     padding: 28px 24px;
     margin-top: 28px;
@@ -170,16 +171,57 @@
   }
   .gaver-top h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 22px; margin-bottom: 6px; }
   .gaver-top p { font-size: 13.5px; color: var(--muted); max-width: 380px; line-height: 1.55; }
+  .praemier-wrap {
+    overflow: hidden;
+    margin: 0 -24px 22px;
+    padding: 4px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  }
+  .praemier-track {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    width: max-content;
+    animation: praemier-scroll 28s linear infinite;
+    padding: 0 24px;
+  }
+  @keyframes praemier-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .praemier-track { animation: none; }
+  }
+  .praemie {
+    display: flex; flex-direction: column; gap: 8px;
+    background: rgba(196,105,143,0.06);
+    border: 1px solid rgba(196,105,143,0.16);
+    border-radius: 12px;
+    padding: 10px 14px;
+    flex-shrink: 0;
+    width: 148px;
+  }
+  .praemie-logo {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 5px 9px;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+  }
+  .praemie-tekst { font-size: 12.5px; color: var(--cream); line-height: 1.4; }
   .gave-punkter { display: flex; flex-direction: column; gap: 13px; margin-bottom: 18px; }
-  .gave-punkt { display: flex; gap: 11px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #D8D0D2; }
+  .gave-punkt { display: flex; gap: 11px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #6B6470; }
   .gave-punkt b { color: var(--cream); }
-  .gdpr-linje { text-align: center; font-size: 11.5px; color: #8A7580; font-style: italic; line-height: 1.6; }
+  .gdpr-linje { text-align: center; font-size: 11.5px; color: #7D6570; font-style: italic; line-height: 1.6; }
 
   .card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(243,238,230,0.1);
+    background: #ffffff;
+    border: 1px solid var(--input-border);
     border-radius: 16px;
     padding: 28px;
+    box-shadow: 0 10px 30px rgba(196,105,143,0.08);
     animation: fadeUp 0.6s ease-out 0.2s both;
   }
   form { margin-bottom: 4px; }
@@ -252,13 +294,13 @@
     display: none;
   }
   .melding.vis { display: block; }
-  .melding.success { background: #d3fbeb; border: 1px solid #10bf7a; color: #0c905c; }
-  .melding.fejl { background: #fde8e2; border: 1px solid #f2643b; color: #ea4110; }
+  .melding.success { background: #F0FDF4; border: 1px solid #22c55e; color: #166534; }
+  .melding.fejl { background: #FFF1F2; border: 1px solid #ef4444; color: #991b1b; }
   .del-besked {
     display: none;
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid rgba(243,238,230,0.12);
+    border-top: 1px solid var(--input-border);
   }
   .del-besked.vis { display: block; }
   .del-besked p { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
@@ -267,7 +309,7 @@
     align-items: center;
     gap: 8px;
     background: transparent;
-    border: 1.5px solid rgba(243,238,230,0.25);
+    border: 1.5px solid var(--input-border);
     color: var(--cream);
     font-family: inherit;
     font-size: 13.5px;
@@ -287,7 +329,7 @@
     margin-bottom: 20px;
   }
   .faq-item {
-    border-bottom: 1px solid rgba(243,238,230,0.1);
+    border-bottom: 1px solid var(--input-border);
     padding: 16px 0;
   }
   .faq-item summary {
@@ -370,7 +412,7 @@
       <form id="venteliste-form" action="https://app.kit.com/forms/9917276/subscriptions" method="post">
         <input type="email" name="email_address" placeholder="Din email" aria-label="Email" required>
         <div class="samtykke">
-          <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required>
+          <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required aria-label="Giv samtykke til at modtage e-mails fra Miingle om lanceringen">
           <label for="samtykke-boks">
             Jeg giver samtykke til at modtage e-mails fra Miingle om lanceringen og accepterer,
             at mine oplysninger behandles i henhold til
@@ -394,6 +436,74 @@
         <h3>Vind gaver fra vores samarbejdspartnere</h3>
         <p>Når du skriver dig op til ventelisten, er du automatisk med i lodtrækningen — helt gratis.</p>
       </div>
+
+      <!-- EKSEMPEL: kun de partnere der faktisk har lagt en gave i puljen står her —
+           IKKE nødvendigvis alle fra "I samarbejde med" nederst på siden. Rullende
+           strip i stedet for liste/grid: skalerer til vilkårligt antal gaver uden at
+           siden vokser, og ingen gave er "først" eller "sidst" — se samtalen om
+           partner-fairness (alle eller ingen, aldrig "vis mere"-skjul). -->
+      <div class="praemier-wrap">
+        <div class="praemier-track">
+          <div class="praemie">
+            <div class="praemie-logo"><img src="babysam.png" width="42" alt="BabySam" height="18"></div>
+            <div class="praemie-tekst">Babypakke, værdi 800 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="Jollyroom" height="18"></div>
+            <div class="praemie-tekst">Gavekort, værdi 500 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="huttelihut.png" width="43" alt="Huttelihut" height="16"></div>
+            <div class="praemie-tekst">Sæt babytøj, værdi 400 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="kidsworld.png" width="34" alt="Kids-World" height="24"></div>
+            <div class="praemie-tekst">Gavekort, værdi 300 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="dulille.png" width="58" alt="Dulille" height="18"></div>
+            <div class="praemie-tekst">Produktpakke, værdi 350 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="babysam.png" width="42" alt="BabySam" height="18"></div>
+            <div class="praemie-tekst">Gavekort, værdi 200 kr</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="Jollyroom" height="18"></div>
+            <div class="praemie-tekst">Produktpakke, værdi 450 kr</div>
+          </div>
+          <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="babysam.png" width="42" alt="" height="18"></div>
+            <div class="praemie-tekst">Babypakke, værdi 800 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="" height="18"></div>
+            <div class="praemie-tekst">Gavekort, værdi 500 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="huttelihut.png" width="43" alt="" height="16"></div>
+            <div class="praemie-tekst">Sæt babytøj, værdi 400 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="kidsworld.png" width="34" alt="" height="24"></div>
+            <div class="praemie-tekst">Gavekort, værdi 300 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
+            <div class="praemie-tekst">Produktpakke, værdi 350 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="babysam.png" width="42" alt="" height="18"></div>
+            <div class="praemie-tekst">Gavekort, værdi 200 kr</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="" height="18"></div>
+            <div class="praemie-tekst">Produktpakke, værdi 450 kr</div>
+          </div>
+        </div>
+      </div>
+
       <div class="gave-punkter">
         <div class="gave-punkt">👥&nbsp; <span><b>Hvem kan deltage:</b> Alle tilmeldt ventelisten med en gyldig emailadresse</span></div>
         <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. januar 2027, samme dag Miingle lanceres</span></div>
@@ -427,17 +537,17 @@
       <div class="label">I samarbejde med</div>
       <div class="partner-track-wrap">
         <div class="partner-track">
-          <div class="partner-chip"><img src="babysam.png" alt="BabySam" height="28"></div>
-          <div class="partner-chip"><img src="dulille.png" alt="Dulille" height="28"></div>
-          <div class="partner-chip"><img src="kidsworld.png" alt="Kids-World" height="28"></div>
-          <div class="partner-chip"><img src="huttelihut.png" alt="Huttelihut" height="28"></div>
-          <div class="partner-chip"><img src="jollyroom.png" alt="Jollyroom" height="28"></div>
+          <div class="partner-chip"><img src="babysam.png" width="65" alt="BabySam" height="28"></div>
+          <div class="partner-chip"><img src="dulille.png" width="89" alt="Dulille" height="28"></div>
+          <div class="partner-chip"><img src="kidsworld.png" width="39" alt="Kids-World" height="28"></div>
+          <div class="partner-chip"><img src="huttelihut.png" width="75" alt="Huttelihut" height="28"></div>
+          <div class="partner-chip"><img src="jollyroom.png" width="117" alt="Jollyroom" height="28"></div>
           <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
-          <div class="partner-chip" aria-hidden="true"><img src="babysam.png" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="dulille.png" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="kidsworld.png" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="huttelihut.png" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="jollyroom.png" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="babysam.png" width="65" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="dulille.png" width="89" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="kidsworld.png" width="39" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="huttelihut.png" width="75" alt="" height="28"></div>
+          <div class="partner-chip" aria-hidden="true"><img src="jollyroom.png" width="117" alt="" height="28"></div>
         </div>
       </div>
     </div>
