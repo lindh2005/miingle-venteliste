@@ -297,6 +297,26 @@
   button[type="submit"]:hover:not(:disabled) { background: var(--pink-dark); }
   button[type="submit"]:active:not(:disabled) { transform: scale(0.99); }
   button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+  .download-sektion[hidden] { display: none; }
+  .download-sektion { margin-bottom: 28px; }
+  .download-knap {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 17px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #fff;
+    background: var(--pink);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .download-knap:hover { background: var(--pink-dark); }
+  .download-knap:active { transform: scale(0.99); }
   .trust-row {
     display: flex;
     align-items: center;
@@ -404,10 +424,10 @@
         <img src="logo.png" width="30" height="30" alt="Miingle" style="border-radius:7px;display:block;flex-shrink:0">
         <div class="logo">Miingle</div>
       </div>
-      <div class="badge">Kommer snart</div>
+      <div class="badge" id="badge">Kommer snart</div>
     </header>
 
-    <div class="lancerer-dato">Lancerer 1. januar 2027</div>
+    <div class="lancerer-dato" id="lancerer-dato">Lancerer 1. januar 2027</div>
     <div class="countdown" id="countdown">
       <div><span class="num" id="cd-days">–</span><span class="unit">Dage</span></div>
       <div><span class="num" id="cd-hours">–</span><span class="unit">Timer</span></div>
@@ -415,13 +435,17 @@
       <div><span class="num" id="cd-sec">–</span><span class="unit">Sek</span></div>
     </div>
 
-    <div class="kicker">Du skal ikke være alene som ny forælder</div>
-    <h1>Find dine <span class="accent">forældre-venner</span> i København med Miingle</h1>
-    <p class="lead">
+    <div class="kicker" id="kicker">Du skal ikke være alene som ny forælder</div>
+    <h1 id="headline">Find dine <span class="accent">forældre-venner</span> i København med Miingle</h1>
+    <p class="lead" id="lead-tekst">
       Miingle gør det nemt at finde og møde andre forældre i dit lokalområde — legegrupper,
       babyrytmik, gåture og gode råd, samlet ét sted. Skriv dig op til ventelisten,
       så får du besked, i det øjeblik appen lancerer.
     </p>
+
+    <div class="download-sektion" id="download-sektion" hidden>
+      <a class="download-knap" id="download-knap" href="#">📱 Download Miingle i App Store</a>
+    </div>
 
     <div class="social-proof" id="social-proof" hidden>
       <div class="dots"><span></span><span></span><span></span></div>
@@ -562,6 +586,26 @@
   </div>
 
   <script>
+    // ── Lancering — sæt LANCERET til true og APP_STORE_URL til det rigtige
+    // link, den dag appen er på App Store. Siden skifter så automatisk fra
+    // venteliste-formular til en download-knap. Ingen anden ændring nødvendig.
+    var LANCERET = false;
+    var APP_STORE_URL = 'https://apps.apple.com/app/idXXXXXXXXXX'; // udskift med rigtigt link ved lancering
+
+    if (LANCERET) {
+      document.getElementById('badge').textContent = 'Lanceret 🎉';
+      document.getElementById('lancerer-dato').hidden = true;
+      document.getElementById('countdown').hidden = true;
+      document.getElementById('kicker').textContent = 'Miingle er her';
+      document.getElementById('headline').innerHTML = 'Find dine <span class="accent">forældre-venner</span> i København med Miingle';
+      document.getElementById('lead-tekst').textContent = 'Miingle er nu klar til download. Find og mød andre forældre i dit lokalområde — legegrupper, babyrytmik, gåture og gode råd, samlet ét sted.';
+      document.querySelector('.card').hidden = true;
+      document.querySelector('.trust-row').hidden = true;
+      var downloadKnap = document.getElementById('download-knap');
+      downloadKnap.href = APP_STORE_URL;
+      document.getElementById('download-sektion').hidden = false;
+    }
+
     // ── Nedtælling til lancering (1. januar 2027, dansk tid) ──────────────
     var launchDato = new Date('2027-01-01T00:00:00+01:00').getTime();
     function opdaterNedtælling() {
