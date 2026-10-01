@@ -341,20 +341,6 @@
     color: var(--muted);
     margin-top: 14px;
   }
-  .rabat-banner {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--pink);
-    color: #fff;
-    border-radius: 12px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    font-size: 13.5px;
-    line-height: 1.4;
-  }
-  .rabat-banner .ikon { font-size: 20px; flex-shrink: 0; }
-  .rabat-banner b { font-weight: 800; }
   .melding {
     padding: 16px 18px;
     border-radius: 10px;
@@ -482,7 +468,6 @@
     </div>
 
     <div class="card">
-      <div class="rabat-banner"><span class="ikon">💰</span><span>Alle på ventelisten får <b>50% rabat på Miingle Plus de første 3 måneder</b> — koden sendes til dig når vi lancerer.</span></div>
       <div class="melding" id="melding"></div>
 
       <form id="venteliste-form" action="https://uvnxbxawydlarjdpubww.supabase.co/functions/v1/venteliste-landingsside-tilmeld" method="post">
@@ -495,10 +480,10 @@
             <a href="privatlivspolitik.html">privatlivspolitikken</a>.
           </label>
         </div>
-        <button type="submit" id="submit-knap">Skriv mig op til ventelisten</button>
+        <button type="submit" id="submit-knap">Skriv mig op på ventelisten</button>
       </form>
 
-      <div class="trust-row">🔒 Ingen spam. Kun besked når vi lancerer. Afmeld når som helst.</div>
+      <div class="trust-row">💰 Alle på ventelisten får 50% rabat på Miingle Plus de første 3 måneder.</div>
 
       <div class="del-besked" id="del-besked">
         <p>Kender du en anden kommende eller ny forælder? Del linket, så I kan starte sammen fra dag ét.</p>
@@ -739,7 +724,7 @@
         .catch(function () {
           visMelding('Noget gik galt. Prøv igen, eller skriv til os på support@miingle.dk.', 'fejl');
           knap.disabled = false;
-          knap.textContent = 'Skriv mig op til ventelisten';
+          knap.textContent = 'Skriv mig op på ventelisten';
         });
     });
 
