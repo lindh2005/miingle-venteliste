@@ -431,10 +431,10 @@
     <div class="card">
       <div class="melding" id="melding"></div>
 
-      <form id="venteliste-form" action="https://app.kit.com/forms/9917276/subscriptions" method="post">
-        <input type="email" name="email_address" placeholder="Din email" aria-label="Email" required>
+      <form id="venteliste-form" action="https://uvnxbxawydlarjdpubww.supabase.co/functions/v1/venteliste-landingsside-tilmeld" method="post">
+        <input type="email" id="email-input" name="email" placeholder="Din email" aria-label="Email" required>
         <div class="samtykke">
-          <input type="checkbox" id="samtykke-boks" name="tags[]" value="23378275" required aria-label="Giv samtykke til at modtage e-mails fra Miingle om lanceringen">
+          <input type="checkbox" id="samtykke-boks" required aria-label="Giv samtykke til at modtage e-mails fra Miingle om lanceringen">
           <label for="samtykke-boks">
             Jeg giver samtykke til at modtage e-mails fra Miingle om lanceringen og accepterer,
             at mine oplysninger behandles i henhold til
@@ -580,7 +580,8 @@
     setInterval(opdaterNedtælling, 1000);
 
     // ── Ægte social proof — vises KUN hvis et rigtigt tal er sat herunder.
-    // Ingen opdigtede tal. Sæt ANTAL_TILMELDT til et rigtigt tal fra Kit for at vise den.
+    // Ingen opdigtede tal. Sæt ANTAL_TILMELDT til et rigtigt tal fra Supabase-tabellen
+    // venteliste_landingsside for at vise den.
     var ANTAL_TILMELDT = null; // fx 214 — sæt til et rigtigt tal, eller lad stå null for at skjule
     if (ANTAL_TILMELDT && ANTAL_TILMELDT > 0) {
       document.getElementById('social-proof-tekst').textContent = ANTAL_TILMELDT + ' forældre er allerede skrevet op';
@@ -588,9 +589,8 @@
     }
 
     // ── Ægte, håndhævet obligatorisk samtykke ──────────────────────────────
-    // Ingen serverside-workaround mulig hos Kit (afprøvet grundigt) — men her
-    // er det bare almindelig HTML5 `required` + native "checkValidity()",
-    // som browseren selv håndhæver. Ingen ekstern platform kan fjerne dette.
+    // Almindelig HTML5 `required` + native "checkValidity()", som browseren
+    // selv håndhæver, uanset backend.
     var formular = document.getElementById('venteliste-form');
     var checkbox = document.getElementById('samtykke-boks');
     var knap = document.getElementById('submit-knap');
@@ -610,22 +610,17 @@
       knap.disabled = true;
       knap.textContent = 'Sender...';
 
-      var data = new FormData(formular);
+      var emailInput = document.getElementById('email-input');
       fetch(formular.action, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data,
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value }),
       })
-        .then(function (res) { return res.json().catch(function () { return {}; }); })
-        .then(function (json) {
-          // Kit sender nogle gange et ekstra sikkerhedstjek ("guards") for
-          // ukendte/mistænkelige afsendere, FØR tilmeldingen reelt gennemføres.
-          // Uden dette tjek ville vi vise en falsk succesbesked, mens
-          // tilmeldingen reelt aldrig blev fuldført hos Kit.
-          if (json && json.status === 'quarantined' && json.url) {
-            window.location.href = json.url;
-            return;
-          }
+        .then(function (res) {
+          if (!res.ok) throw new Error('fejl');
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function () {
           visMelding('Tak for din tilmelding, du er officielt på ventelisten! ✉️ Vi glæder os til at have dig med, når Miingle lancerer.', 'success');
           formular.style.display = 'none';
           document.querySelector('.trust-row').style.display = 'none';
