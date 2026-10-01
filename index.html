@@ -162,6 +162,12 @@
     box-shadow: 0 2px 8px rgba(196,105,143,0.10);
   }
   .partner-chip img { display: block; }
+  .partner-chip-tekst {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    padding: 8px 18px;
+  }
 
   .gaver {
     background: linear-gradient(180deg, rgba(196,105,143,0.14) 0%, rgba(196,105,143,0.04) 100%);
@@ -217,6 +223,13 @@
     align-self: flex-start;
     display: flex;
     align-items: center;
+  }
+  .praemie-logo-tekst {
+    background: transparent;
+    padding: 5px 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
   }
   .praemie-tekst { font-size: 12.5px; color: var(--cream); line-height: 1.4; }
   .gave-punkter { display: flex; flex-direction: column; gap: 13px; margin-bottom: 18px; }
@@ -454,61 +467,45 @@
       <div class="praemier-wrap">
         <div class="praemier-track">
           <div class="praemie">
-            <div class="praemie-logo"><img src="babysam.png" width="42" alt="BabySam" height="18"></div>
-            <div class="praemie-tekst">Babypakke, værdi 800 kr</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="Jollyroom" height="18"></div>
-            <div class="praemie-tekst">Gavekort, værdi 500 kr</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="huttelihut.png" width="43" alt="Huttelihut" height="16"></div>
-            <div class="praemie-tekst">Sæt babytøj, værdi 400 kr</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="kidsworld.png" width="34" alt="Kids-World" height="24"></div>
-            <div class="praemie-tekst">Gavekort, værdi 300 kr</div>
-          </div>
-          <div class="praemie">
             <div class="praemie-logo"><img src="dulille.png" width="58" alt="Dulille" height="18"></div>
             <div class="praemie-tekst">Produktpakke, værdi 350 kr</div>
           </div>
           <div class="praemie">
-            <div class="praemie-logo"><img src="babysam.png" width="42" alt="BabySam" height="18"></div>
-            <div class="praemie-tekst">Gavekort, værdi 200 kr</div>
+            <div class="praemie-logo praemie-logo-tekst">Partner 2</div>
+            <div class="praemie-tekst">Gave på vej</div>
           </div>
           <div class="praemie">
-            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="Jollyroom" height="18"></div>
-            <div class="praemie-tekst">Produktpakke, værdi 450 kr</div>
+            <div class="praemie-logo praemie-logo-tekst">Partner 3</div>
+            <div class="praemie-tekst">Gave på vej</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo praemie-logo-tekst">Partner 4</div>
+            <div class="praemie-tekst">Gave på vej</div>
+          </div>
+          <div class="praemie">
+            <div class="praemie-logo praemie-logo-tekst">Partner 5</div>
+            <div class="praemie-tekst">Gave på vej</div>
           </div>
           <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="babysam.png" width="42" alt="" height="18"></div>
-            <div class="praemie-tekst">Babypakke, værdi 800 kr</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="" height="18"></div>
-            <div class="praemie-tekst">Gavekort, værdi 500 kr</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="huttelihut.png" width="43" alt="" height="16"></div>
-            <div class="praemie-tekst">Sæt babytøj, værdi 400 kr</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="kidsworld.png" width="34" alt="" height="24"></div>
-            <div class="praemie-tekst">Gavekort, værdi 300 kr</div>
-          </div>
           <div class="praemie" aria-hidden="true">
             <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
             <div class="praemie-tekst">Produktpakke, værdi 350 kr</div>
           </div>
           <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="babysam.png" width="42" alt="" height="18"></div>
-            <div class="praemie-tekst">Gavekort, værdi 200 kr</div>
+            <div class="praemie-logo praemie-logo-tekst">Partner 2</div>
+            <div class="praemie-tekst">Gave på vej</div>
           </div>
           <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="jollyroom.png" width="76" alt="" height="18"></div>
-            <div class="praemie-tekst">Produktpakke, værdi 450 kr</div>
+            <div class="praemie-logo praemie-logo-tekst">Partner 3</div>
+            <div class="praemie-tekst">Gave på vej</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo praemie-logo-tekst">Partner 4</div>
+            <div class="praemie-tekst">Gave på vej</div>
+          </div>
+          <div class="praemie" aria-hidden="true">
+            <div class="praemie-logo praemie-logo-tekst">Partner 5</div>
+            <div class="praemie-tekst">Gave på vej</div>
           </div>
         </div>
       </div>
@@ -546,17 +543,17 @@
       <div class="label">I samarbejde med</div>
       <div class="partner-track-wrap">
         <div class="partner-track">
-          <div class="partner-chip"><img src="babysam.png" width="65" alt="BabySam" height="28"></div>
           <div class="partner-chip"><img src="dulille.png" width="89" alt="Dulille" height="28"></div>
-          <div class="partner-chip"><img src="kidsworld.png" width="39" alt="Kids-World" height="28"></div>
-          <div class="partner-chip"><img src="huttelihut.png" width="75" alt="Huttelihut" height="28"></div>
-          <div class="partner-chip"><img src="jollyroom.png" width="117" alt="Jollyroom" height="28"></div>
+          <div class="partner-chip partner-chip-tekst">Partner 2</div>
+          <div class="partner-chip partner-chip-tekst">Partner 3</div>
+          <div class="partner-chip partner-chip-tekst">Partner 4</div>
+          <div class="partner-chip partner-chip-tekst">Partner 5</div>
           <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
-          <div class="partner-chip" aria-hidden="true"><img src="babysam.png" width="65" alt="" height="28"></div>
           <div class="partner-chip" aria-hidden="true"><img src="dulille.png" width="89" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="kidsworld.png" width="39" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="huttelihut.png" width="75" alt="" height="28"></div>
-          <div class="partner-chip" aria-hidden="true"><img src="jollyroom.png" width="117" alt="" height="28"></div>
+          <div class="partner-chip partner-chip-tekst" aria-hidden="true">Partner 2</div>
+          <div class="partner-chip partner-chip-tekst" aria-hidden="true">Partner 3</div>
+          <div class="partner-chip partner-chip-tekst" aria-hidden="true">Partner 4</div>
+          <div class="partner-chip partner-chip-tekst" aria-hidden="true">Partner 5</div>
         </div>
       </div>
     </div>
