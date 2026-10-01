@@ -170,11 +170,26 @@
   }
 
   .gaver {
+    position: relative;
     background: linear-gradient(180deg, rgba(196,105,143,0.14) 0%, rgba(196,105,143,0.04) 100%);
     border: 1px solid rgba(196,105,143,0.22);
     border-radius: 16px;
     padding: 28px 24px;
     margin-top: 28px;
+  }
+  .lodder-badge[hidden] { display: none; }
+  .lodder-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #C4698F;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(196,105,143,0.25);
   }
   .gaver-top { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px; }
   .gaver-ikon {
@@ -477,6 +492,7 @@
     </div>
 
     <div class="gaver">
+      <div class="lodder-badge" id="lodder-badge" hidden>🎟️ <span id="lodder-antal">1</span> lod</div>
       <div class="gaver-top">
         <div class="gaver-ikon">🎁</div>
         <h3>Vind præmier fra vores samarbejdspartnere</h3>
@@ -539,6 +555,7 @@
         <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. januar 2027, samme dag Miingle lanceres</span></div>
         <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes direkte på mailadressen de skrev sig op med</span></div>
         <div class="gave-punkt">🎯&nbsp; <span><b>Én præmie pr. person:</b> Man kan maksimalt vinde én præmie, uanset puljens størrelse</span></div>
+        <div class="gave-punkt">🎟️&nbsp; <span><b>Flere lodder:</b> Inviter op til 3 venner — du får ét ekstra lod for hver ven der tilmelder sig via dit link (se linket i din velkomstmail)</span></div>
       </div>
       <div class="gdpr-linje">Din emailadresse bruges udelukkende til Miingle og deles ikke med vores samarbejdspartnere eller andre tredjeparter.</div>
     </div>
@@ -639,10 +656,34 @@
     var checkbox = document.getElementById('samtykke-boks');
     var knap = document.getElementById('submit-knap');
     var meldingBoks = document.getElementById('melding');
+    var lodderBadge = document.getElementById('lodder-badge');
+    var lodderAntal = document.getElementById('lodder-antal');
+    var delLink = window.location.origin + '/'; // opdateres til personligt link efter tilmelding/?mine=
 
     function visMelding(tekst, type) {
       meldingBoks.textContent = tekst;
       meldingBoks.className = 'melding vis ' + type;
+    }
+
+    function visLodderBadge(antal) {
+      lodderAntal.textContent = antal;
+      lodderBadge.hidden = false;
+    }
+
+    // ── Henvisninger (?ref=) og eget lodder-tjek (?mine=) via URL ──────────
+    var urlParams = new URLSearchParams(window.location.search);
+    var henvistAfKode = urlParams.get('ref');
+    var mitToken = urlParams.get('mine');
+
+    if (mitToken) {
+      fetch('https://uvnxbxawydlarjdpubww.supabase.co/functions/v1/venteliste-landingsside-mine-lodder?token=' + encodeURIComponent(mitToken))
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          if (!data) return;
+          delLink = data.referral_link;
+          visLodderBadge(data.lodder);
+        })
+        .catch(function () {});
     }
 
     formular.addEventListener('submit', function (e) {
@@ -655,20 +696,30 @@
       knap.textContent = 'Sender...';
 
       var emailInput = document.getElementById('email-input');
+      var body = { email: emailInput.value };
+      if (henvistAfKode) body.henvist_af_kode = henvistAfKode;
+
       fetch(formular.action, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: emailInput.value }),
+        body: JSON.stringify(body),
       })
         .then(function (res) {
           if (!res.ok) throw new Error('fejl');
           return res.json().catch(function () { return {}; });
         })
-        .then(function () {
+        .then(function (json) {
           visMelding('Tak for din tilmelding, du er officielt på ventelisten! ✉️ Vi glæder os til at have dig med, når Miingle lancerer.', 'success');
           formular.style.display = 'none';
           document.querySelector('.trust-row').style.display = 'none';
           document.getElementById('del-besked').classList.add('vis');
+          if (json && json.referral_link) {
+            delLink = json.referral_link;
+            visLodderBadge(1);
+          }
+          if (json && json.mine_token) {
+            history.replaceState(null, '', window.location.pathname + '?mine=' + json.mine_token);
+          }
         })
         .catch(function () {
           visMelding('Noget gik galt. Prøv igen, eller skriv til os på support@miingle.dk.', 'fejl');
@@ -679,7 +730,7 @@
 
     var kopierKnap = document.getElementById('kopier-link-knap');
     kopierKnap.addEventListener('click', function () {
-      navigator.clipboard.writeText(window.location.origin + '/').then(function () {
+      navigator.clipboard.writeText(delLink).then(function () {
         kopierKnap.textContent = '✅ Link kopieret!';
         setTimeout(function () { kopierKnap.textContent = '🔗 Kopiér link'; }, 2000);
       });
