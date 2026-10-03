@@ -123,7 +123,7 @@
   }
   .social-proof .dots span:first-child { margin-left: 0; }
 
-  .partnere { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--input-border); }
+  .partnere { margin-top: 56px; }
   .partnere .label {
     font-size: 11px;
     font-weight: 700;
@@ -450,11 +450,11 @@
       <div><span class="num" id="cd-sec">–</span><span class="unit">Sek</span></div>
     </div>
 
-    <div class="kicker" id="kicker">Du skal ikke være alene som ny forælder</div>
-    <h1 id="headline">Find dine <span class="accent">forældre-venner</span> i København med Miingle</h1>
+    <div class="kicker" id="kicker">Ingen skal være alene</div>
+    <h1 id="headline"><span class="accent">Miingle</span> med forældre nær dig</h1>
     <p class="lead" id="lead-tekst">
-      Miingle gør det nemt at finde og møde andre forældre i dit lokalområde — legegrupper,
-      babyrytmik, gåture og gode råd, samlet ét sted. Skriv dig op til ventelisten,
+      Gåture, cafébesøg og foredrag med eksperter, artikler fulde af gode råd — og meget mere.
+      Mød andre forældre i dit lokalområde, samlet ét sted. Skriv dig op til ventelisten,
       så får du besked, i det øjeblik appen lancerer.
     </p>
 
@@ -614,8 +614,8 @@
       document.getElementById('lancerer-dato').hidden = true;
       document.getElementById('countdown').hidden = true;
       document.getElementById('kicker').textContent = 'Miingle er her';
-      document.getElementById('headline').innerHTML = 'Find dine <span class="accent">forældre-venner</span> i København med Miingle';
-      document.getElementById('lead-tekst').textContent = 'Miingle er nu klar til download. Find og mød andre forældre i dit lokalområde — legegrupper, babyrytmik, gåture og gode råd, samlet ét sted.';
+      document.getElementById('headline').innerHTML = '<span class="accent">Miingle</span> med forældre nær dig';
+      document.getElementById('lead-tekst').textContent = 'Miingle er nu klar til download. Gåture, cafébesøg og foredrag med eksperter, artikler fulde af gode råd — og meget mere. Mød andre forældre i dit lokalområde, samlet ét sted.';
       document.querySelector('.card').hidden = true;
       document.querySelector('.trust-row').hidden = true;
       var downloadKnap = document.getElementById('download-knap');
