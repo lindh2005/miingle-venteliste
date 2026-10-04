@@ -11,10 +11,10 @@
 <style>
   :root {
     /* Miingles farvetema — samme tokens som appen (constants/tema.ts) */
-    --background: #F7F4EF;  /* siden */
+    --background: #FAF8F5;  /* siden */
     --card: #FFFFFF;        /* kort — løftes frem fra siden */
-    --surface: #EDE4DC;     /* felter, chips, trykket tilstand */
-    --border: #E0D5CB;      /* kanter og skillelinjer */
+    --surface: #F4EEE8;     /* felter, chips, trykket tilstand */
+    --border: #E9E1D9;      /* kanter og skillelinjer */
     --brand: #8A5C45;       /* knapper, ikoner, aktive states */
     --brand-dark: #6B4634;  /* trykket knap, links, små labels */
     --text: #3A2A22;        /* overskrifter og brødtekst */
@@ -53,8 +53,8 @@
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--brand);
-    background: rgba(var(--brand-rgb), 0.12);
+    color: var(--brand-dark);
+    background: var(--surface);
     padding: 6px 12px;
     border-radius: 20px;
     white-space: nowrap;
@@ -181,8 +181,8 @@
 
   .gaver {
     position: relative;
-    background: linear-gradient(180deg, rgba(var(--brand-rgb), 0.14) 0%, rgba(var(--brand-rgb), 0.04) 100%);
-    border: 1px solid rgba(var(--brand-rgb), 0.22);
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 28px 24px;
     margin-top: 28px;
@@ -204,7 +204,7 @@
   .gaver-top { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px; }
   .gaver-ikon {
     width: 48px; height: 48px; border-radius: 14px;
-    background: rgba(var(--brand-rgb), 0.15);
+    background: var(--card);
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 12px; font-size: 22px;
   }
@@ -234,8 +234,8 @@
   }
   .praemie {
     display: flex; flex-direction: column; gap: 8px;
-    background: rgba(var(--brand-rgb), 0.06);
-    border: 1px solid rgba(var(--brand-rgb), 0.16);
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 10px 14px;
     flex-shrink: 0;
