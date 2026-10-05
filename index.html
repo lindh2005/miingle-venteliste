@@ -10,24 +10,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root {
-    /* Miingles farvetema — samme tokens som appen (constants/tema.ts) */
-    --background: #FAF8F5;  /* siden */
-    --card: #FFFFFF;        /* kort — løftes frem fra siden */
-    --surface: #F4EEE8;     /* felter, chips, trykket tilstand */
-    --border: #E9E1D9;      /* kanter og skillelinjer */
-    --brand: #8A5C45;       /* knapper, ikoner, aktive states */
-    --brand-dark: #6B4634;  /* trykket knap, links, små labels */
-    --text: #3A2A22;        /* overskrifter og brødtekst */
-    --text-muted: #6F6259;  /* hjælpetekst */
-    --success: #2F6B4F;
-    --warning: #8A5A12;
-    --info: #2B5C8A;
-    --error: #A32A22;
+    /* Miingles farvetema "Havre & espresso" — samme tokens som appen (constants/tema.ts) */
+    --background: #F6F0E6;  /* havre — siden */
+    --card: #FFFFFF;        /* kort er altid hvide */
+    --surface: #EBE1D2;     /* felter, chips, inputs */
+    --border: #DCCFBB;      /* kanter og skillelinjer */
+    --field: #CBB79A;       /* sand — accentflader; ALDRIG hvid tekst ovenpå */
+    --brand: #3B2F27;       /* espresso — knapper og udfyldte elementer */
+    --brand-dark: #2A211B;  /* trykket knap og links */
+    --text: #2A211B;        /* overskrifter og brødtekst */
+    --text-muted: #6E6052;  /* hjælpetekst */
+    --success: #4E6B55;
+    --warning: #7F6029;
+    --info: #4A6075;
+    --error: #9B4A3F;
     /* RGB-udgaver til gennemsigtige toner: rgba(var(--brand-rgb), 0.1) */
-    --brand-rgb: 138, 92, 69;
-    --success-rgb: 47, 107, 79;
-    --error-rgb: 163, 42, 34;
+    --brand-rgb: 59, 47, 39;
+    --success-rgb: 78, 107, 85;
+    --error-rgb: 155, 74, 63;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
