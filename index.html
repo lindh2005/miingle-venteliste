@@ -152,16 +152,19 @@
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
   }
+  /* Ingen gap/padding på selve båndet: hvert element har sin egen afstand (margin-right),
+     så det andet sæt starter præcis ved 50% og loopet ikke springer. */
   .partner-track {
     display: flex;
     align-items: center;
-    gap: 10px;
     width: max-content;
     animation: partner-scroll 20s linear infinite;
+    will-change: transform;
   }
+  .partner-track > * { margin-right: 10px; }
   @keyframes partner-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
   @media (prefers-reduced-motion: reduce) {
     .partner-track { animation: none; }
@@ -217,21 +220,21 @@
   .praemier-wrap {
     overflow: hidden;
     margin: 0 -24px 22px;
-    padding: 4px 0;
+    padding: 4px 24px;
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
   }
   .praemier-track {
     display: flex;
     align-items: stretch;
-    gap: 10px;
     width: max-content;
     animation: praemier-scroll 28s linear infinite;
-    padding: 0 24px;
+    will-change: transform;
   }
+  .praemier-track > * { margin-right: 10px; }
   @keyframes praemier-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
   @media (prefers-reduced-motion: reduce) {
     .praemier-track { animation: none; }
