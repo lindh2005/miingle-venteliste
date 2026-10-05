@@ -529,7 +529,7 @@
     </div>
 
     <div class="gaver">
-      <div class="lodder-badge" id="lodder-badge" hidden>🎟️ <span id="lodder-antal">1</span> lod</div>
+      <div class="lodder-badge" id="lodder-badge" hidden></div>
       <div class="gaver-top">
         <div class="gaver-ikon">🎁</div>
         <h3>Vind præmier fra vores samarbejdspartnere</h3>
@@ -592,7 +592,7 @@
         <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. januar 2027, samme dag Miingle lanceres</span></div>
         <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes direkte på mailadressen de skrev sig op med</span></div>
         <div class="gave-punkt">🎯&nbsp; <span><b>Én præmie pr. person:</b> Man kan maksimalt vinde én præmie, uanset puljens størrelse</span></div>
-        <div class="gave-punkt">🎟️&nbsp; <span><b>Flere lodder:</b> Inviter op til 2 venner — du får ét ekstra lod for hver ven der tilmelder sig via dit link, op til 3 lodder i alt (se linket i din velkomstmail)</span></div>
+        <div class="gave-punkt">🎟️&nbsp; <span><b>Flere lodder:</b> Inviter op til 2 venner — du får ét ekstra lod for hver ven der tilmelder sig via dit link og bekræfter sin email, op til 3 lodder i alt (se linket i din velkomstmail)</span></div>
       </div>
       <div class="gdpr-linje">Din emailadresse bruges udelukkende til Miingle og deles ikke med vores samarbejdspartnere eller andre tredjeparter.</div>
     </div>
@@ -694,7 +694,6 @@
     var knap = document.getElementById('submit-knap');
     var meldingBoks = document.getElementById('melding');
     var lodderBadge = document.getElementById('lodder-badge');
-    var lodderAntal = document.getElementById('lodder-antal');
     var delLink = window.location.origin + '/'; // opdateres til personligt link efter tilmelding/?mine=
 
     function visMelding(tekst, type) {
@@ -702,25 +701,55 @@
       meldingBoks.className = 'melding vis ' + type;
     }
 
-    function visLodderBadge(antal) {
-      lodderAntal.textContent = antal;
+    // Lodder tæller først, når emailen er bekræftet (link i velkomstmailen) — også for venner.
+    function visLodderBadge(antal, afventer, bekraeftet) {
+      var tekst = bekraeftet === false
+        ? '✉️ Bekræft din email for at være med'
+        : '🎟️ ' + antal + (antal === 1 ? ' lod' : ' lodder');
+      if (afventer > 0) tekst += ' · ' + afventer + (afventer === 1 ? ' ven' : ' venner') + ' mangler at bekræfte';
+      lodderBadge.textContent = tekst;
       lodderBadge.hidden = false;
     }
+    function skjulFormular() {
+      formular.style.display = 'none';
+      document.querySelector('.trust-row').style.display = 'none';
+      document.getElementById('del-besked').classList.add('vis');
+    }
+    var FN = 'https://uvnxbxawydlarjdpubww.supabase.co/functions/v1/';
 
     // ── Henvisninger (?ref=) og eget lodder-tjek (?mine=) via URL ──────────
     var urlParams = new URLSearchParams(window.location.search);
     var henvistAfKode = urlParams.get('ref');
     var mitToken = urlParams.get('mine');
+    var bekraeftToken = urlParams.get('bekraeft');
 
-    if (mitToken) {
-      fetch('https://uvnxbxawydlarjdpubww.supabase.co/functions/v1/venteliste-landingsside-mine-lodder?token=' + encodeURIComponent(mitToken))
+    function hentMineLodder(token) {
+      fetch(FN + 'venteliste-landingsside-mine-lodder?token=' + encodeURIComponent(token))
         .then(function (res) { return res.ok ? res.json() : null; })
         .then(function (data) {
           if (!data) return;
           delLink = data.referral_link;
-          visLodderBadge(data.lodder);
+          visLodderBadge(data.lodder, data.venner_afventer || 0, data.bekraeftet);
         })
         .catch(function () {});
+    }
+
+    if (bekraeftToken) {
+      // Klik på "Bekræft min email" i velkomstmailen
+      fetch(FN + 'venteliste-landingsside-bekraeft?token=' + encodeURIComponent(bekraeftToken))
+        .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+        .then(function (svar) {
+          if (!svar.ok) { visMelding('Linket virker ikke længere. Skriv dig op igen med samme email, så sender vi et nyt.', 'fejl'); return; }
+          visMelding(svar.d.allerede_bekraeftet ? 'Din email var allerede bekræftet — du er med i lodtrækningen 🎟️' : 'Tak! Din email er bekræftet, og du er med i lodtrækningen 🎟️', 'success');
+          skjulFormular();
+          if (svar.d.mine_token) {
+            history.replaceState(null, '', window.location.pathname + '?mine=' + svar.d.mine_token);
+            hentMineLodder(svar.d.mine_token);
+          }
+        })
+        .catch(function () { visMelding('Noget gik galt. Prøv linket igen om lidt.', 'fejl'); });
+    } else if (mitToken) {
+      hentMineLodder(mitToken);
     }
 
     formular.addEventListener('submit', function (e) {
@@ -746,14 +775,12 @@
           return res.json().catch(function () { return {}; });
         })
         .then(function (json) {
-          visMelding('Tak for din tilmelding, du er officielt på ventelisten! ✉️ Vi glæder os til at have dig med, når Miingle lancerer.', 'success');
-          formular.style.display = 'none';
-          document.querySelector('.trust-row').style.display = 'none';
-          document.getElementById('del-besked').classList.add('vis');
+          visMelding('Tak! Du er på ventelisten. Tjek din indbakke og bekræft din email ✉️ — så er du med i lodtrækningen.', 'success');
+          skjulFormular();
           if (json && json.referral_link) {
             delLink = json.referral_link;
-            visLodderBadge(1);
           }
+          if (json && json.mine_token) hentMineLodder(json.mine_token);
           if (json && json.mine_token) {
             history.replaceState(null, '', window.location.pathname + '?mine=' + json.mine_token);
           }
