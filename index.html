@@ -7,7 +7,7 @@
 <meta name="description" content="Miingle — fællesskabet for forældre i København er på vej. Tilmeld dig ventelisten og få besked med det samme vi lancerer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap">
 <style>
   :root {
     /* Miingles farvetema "Havre & espresso" — samme tokens som appen (constants/tema.ts) */
@@ -15,8 +15,9 @@
     --card: #FFFFFF;        /* kort er altid hvide */
     --surface: #EBE1D2;     /* felter, chips, inputs */
     --border: #DCCFBB;      /* kanter og skillelinjer */
-    --field: #CBB79A;       /* sand — accentflader; ALDRIG hvid tekst ovenpå */
-    --brand: #3B2F27;       /* espresso — knapper og udfyldte elementer */
+    --sand: #CBB79A;        /* billedfelter, bannere, pladsholdere — ALDRIG hvid tekst ovenpå */
+    --brand: #2A211B;       /* espresso — knapper og udfyldte elementer */
+    --brand-pressed: #413229; /* trykket knap */
     --brand-dark: #2A211B;  /* trykket knap og links */
     --text: #2A211B;        /* overskrifter og brødtekst */
     --text-muted: #6E6052;  /* hjælpetekst */
@@ -25,7 +26,7 @@
     --info: #4A6075;
     --error: #9B4A3F;
     /* RGB-udgaver til gennemsigtige toner: rgba(var(--brand-rgb), 0.1) */
-    --brand-rgb: 59, 47, 39;
+    --brand-rgb: 42, 33, 27;
     --success-rgb: 78, 107, 85;
     --error-rgb: 155, 74, 63;
   }
@@ -35,7 +36,7 @@
   body {
     background: var(--background);
     color: var(--text);
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
   }
@@ -49,7 +50,7 @@
   }
   .brand { display: flex; align-items: center; gap: 10px; }
   .brand img { display: block; flex-shrink: 0; }
-  .logo { font-family: 'Instrument Serif', serif; font-size: 22px; letter-spacing: 0.3px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 0.3px; }
   .badge {
     font-size: 11px;
     font-weight: 700;
@@ -80,7 +81,7 @@
   }
   .countdown div { text-align: center; }
   .countdown .num {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(26px, 7vw, 40px);
     line-height: 1;
   }
@@ -101,9 +102,9 @@
     margin-bottom: 14px;
   }
   h1 {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 400;
-    font-size: clamp(30px, 6vw, 42px);
+    font-size: clamp(27px, 6vw, 40px);  /* Playfair er bredere — undgå enlig "dig" på mobil */
     line-height: 1.18;
     margin-bottom: 20px;
     animation: fadeUp 0.6s ease-out 0.1s both;
@@ -183,7 +184,7 @@
 
   .gaver {
     position: relative;
-    background: var(--surface);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 28px 24px;
@@ -210,7 +211,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 12px; font-size: 22px;
   }
-  .gaver-top h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 22px; margin-bottom: 6px; }
+  .gaver-top h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 22px; margin-bottom: 6px; }
   .gaver-top p { font-size: 13.5px; color: var(--text-muted); max-width: 380px; line-height: 1.55; }
   .praemier-wrap {
     overflow: hidden;
@@ -321,7 +322,7 @@
     cursor: pointer;
     transition: background 0.15s, opacity 0.15s, transform 0.1s;
   }
-  button[type="submit"]:hover:not(:disabled) { background: var(--brand-dark); }
+  button[type="submit"]:hover:not(:disabled), button[type="submit"]:active:not(:disabled) { background: var(--brand-pressed); }
   button[type="submit"]:active:not(:disabled) { transform: scale(0.99); }
   button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
   .download-sektion[hidden] { display: none; }
@@ -342,7 +343,7 @@
     text-decoration: none;
     transition: background 0.15s, transform 0.1s;
   }
-  .download-knap:hover { background: var(--brand-dark); }
+  .download-knap:hover, .download-knap:active { background: var(--brand-pressed); }
   .download-knap:active { transform: scale(0.99); }
   .trust-row {
     display: flex;
@@ -362,8 +363,8 @@
     display: none;
   }
   .melding.vis { display: block; }
-  .melding.success { background: rgba(var(--success-rgb), 0.08); border: 1px solid var(--success); color: var(--success); }
-  .melding.fejl { background: rgba(var(--error-rgb), 0.08); border: 1px solid var(--error); color: var(--error); }
+  .melding.success { background: var(--card); border: 1px solid var(--success); color: var(--success); }
+  .melding.fejl { background: var(--card); border: 1px solid var(--error); color: var(--error); }
   .del-besked {
     display: none;
     margin-top: 16px;
@@ -391,7 +392,7 @@
 
   .faq { margin-top: 56px; }
   .faq h2 {
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 400;
     font-size: 24px;
     margin-bottom: 20px;
@@ -448,8 +449,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <img src="logo.png" width="30" height="30" alt="Miingle" style="border-radius:7px;display:block;flex-shrink:0">
-        <div class="logo">Miingle</div>
+        <img src="logo-vandret.png" height="30" alt="Miingle" style="display:block;height:30px;width:auto">
       </div>
       <div class="badge" id="badge">Kommer snart</div>
     </header>
