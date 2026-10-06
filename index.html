@@ -466,7 +466,7 @@
       <div><span class="num" id="cd-sec">–</span><span class="unit">Sek</span></div>
     </div>
 
-    <div class="kicker" id="kicker">Ingen skal være alene</div>
+    <div class="kicker" id="kicker" hidden></div>
     <h1 id="headline"><span class="accent">Miingle</span> med forældre nær dig</h1>
     <p class="lead" id="lead-tekst">
       Gåture, cafébesøg og foredrag med eksperter, artikler fulde af gode råd — og meget mere.
@@ -531,8 +531,8 @@
             <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
           </div>
           <div class="praemie">
-            <div class="praemie-logo-tekst">Partner 3</div>
-            <div class="praemie-tekst">Præmie på vej</div>
+            <div class="praemie-logo"><img src="kube.png" width="75" alt="KU.BE" height="18"></div>
+            <div class="praemie-tekst">Præmie venter</div>
           </div>
           <div class="praemie">
             <div class="praemie-logo-tekst">Partner 4</div>
@@ -552,8 +552,8 @@
             <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
           </div>
           <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo-tekst">Partner 3</div>
-            <div class="praemie-tekst">Præmie på vej</div>
+            <div class="praemie-logo"><img src="kube.png" width="75" alt="" height="18"></div>
+            <div class="praemie-tekst">Præmie venter</div>
           </div>
           <div class="praemie" aria-hidden="true">
             <div class="praemie-logo-tekst">Partner 4</div>
@@ -602,13 +602,13 @@
         <div class="partner-track">
           <div class="partner-chip"><img src="dulille.png" width="89" alt="Dulille" height="28"></div>
           <div class="partner-chip" style="padding:4px 12px"><img src="migogminstoremave-vandret.png" width="103" alt="Mig og min store mave" height="36"></div>
-          <div class="partner-chip-tekst">Partner 3</div>
+          <div class="partner-chip" style="padding:13px 16px"><img src="kube.png" width="75" alt="KU.BE" height="18"></div>
           <div class="partner-chip-tekst">Partner 4</div>
           <div class="partner-chip-tekst">Partner 5</div>
           <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
           <div class="partner-chip" aria-hidden="true"><img src="dulille.png" width="89" alt="" height="28"></div>
           <div class="partner-chip" style="padding:4px 12px" aria-hidden="true"><img src="migogminstoremave-vandret.png" width="103" alt="" height="36"></div>
-          <div class="partner-chip-tekst" aria-hidden="true">Partner 3</div>
+          <div class="partner-chip" style="padding:13px 16px" aria-hidden="true"><img src="kube.png" width="75" alt="" height="18"></div>
           <div class="partner-chip-tekst" aria-hidden="true">Partner 4</div>
           <div class="partner-chip-tekst" aria-hidden="true">Partner 5</div>
         </div>
@@ -630,6 +630,7 @@
       document.getElementById('lancerer-dato').hidden = true;
       document.getElementById('countdown').hidden = true;
       document.getElementById('kicker').textContent = 'Miingle er her';
+      document.getElementById('kicker').hidden = false;
       document.getElementById('headline').innerHTML = '<span class="accent">Miingle</span> med forældre nær dig';
       document.getElementById('lead-tekst').textContent = 'Miingle er nu klar til download. Gåture, cafébesøg og foredrag med eksperter, artikler fulde af gode råd — og meget mere. Mød andre forældre i dit lokalområde, samlet ét sted.';
       document.querySelector('.card').hidden = true;
