@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Miingle · Betaling</title>
+<style>
+  body { margin: 0; background: #F6F0E6; color: #2A211B; font-family: -apple-system, Helvetica, Arial, sans-serif; display: flex; min-height: 100vh; align-items: center; justify-content: center; }
+  .kort { background: #fff; border-radius: 20px; padding: 32px 24px; max-width: 360px; margin: 16px; text-align: center; box-shadow: 0 4px 20px rgba(42,33,27,0.08); }
+  h1 { font-size: 22px; margin: 12px 0 8px; }
+  p { color: #6E6052; font-size: 15px; line-height: 1.5; margin: 0 0 20px; }
+  a.knap { display: inline-block; background: #2A211B; color: #fff; text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 14px; }
+  .ikon { font-size: 40px; }
+</style>
+</head>
+<body>
+<div class="kort">
+  <div class="ikon" id="ikon">🎟️</div>
+  <h1 id="titel">Tak for din betaling</h1>
+  <p id="tekst">Din billet er på vej. Du sendes tilbage til Miingle-appen.</p>
+  <a class="knap" id="knap" href="miingle://">Åbn Miingle</a>
+</div>
+<script>
+  // Stripe sender hertil efter betaling; vi sender videre til appen (som venter på miingle://betaling)
+  var q = new URLSearchParams(location.search);
+  var status = q.get('status') === 'ok' ? 'ok' : 'annulleret';
+  var foredrag = (q.get('foredrag') || '').replace(/[^0-9a-f-]/gi, '');
+  var app = 'miingle://betaling?status=' + status + (foredrag ? '&foredrag=' + foredrag : '');
+  if (status !== 'ok') {
+    document.getElementById('ikon').textContent = '↩️';
+    document.getElementById('titel').textContent = 'Betalingen blev afbrudt';
+    document.getElementById('tekst').textContent = 'Der er ikke trukket noget. Du sendes tilbage til Miingle-appen.';
+  }
+  document.getElementById('knap').href = app;
+  location.replace(app);
+</script>
+</body>
+</html>
