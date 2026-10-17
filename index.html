@@ -458,7 +458,7 @@
       <div class="badge" id="badge">Kommer snart</div>
     </header>
 
-    <div class="lancerer-dato" id="lancerer-dato">Lancerer 1. januar 2027</div>
+    <div class="lancerer-dato" id="lancerer-dato">Lancerer 1. februar 2027</div>
     <div class="countdown" id="countdown">
       <div><span class="num" id="cd-days">–</span><span class="unit">Dage</span></div>
       <div><span class="num" id="cd-hours">–</span><span class="unit">Timer</span></div>
@@ -624,7 +624,7 @@
 
       <div class="gave-punkter">
         <div class="gave-punkt">👥&nbsp; <span><b>Hvem kan deltage:</b> Alle tilmeldt ventelisten med en gyldig emailadresse</span></div>
-        <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. januar 2027, samme dag Miingle lanceres</span></div>
+        <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. februar 2027, samme dag Miingle lanceres</span></div>
         <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes direkte på mailadressen de skrev sig op med</span></div>
         <div class="gave-punkt">🎯&nbsp; <span><b>Én præmie pr. person:</b> Man kan maksimalt vinde én præmie, uanset puljens størrelse</span></div>
         <div class="gave-punkt">🎟️&nbsp; <span><b>Flere lodder:</b> Inviter op til 2 venner — du får ét ekstra lod for hver ven der tilmelder sig via dit link og bekræfter sin email, op til 3 lodder i alt (se linket i din velkomstmail)</span></div>
@@ -636,7 +636,7 @@
       <h2>Ofte stillede spørgsmål</h2>
       <details class="faq-item">
         <summary>Hvornår lancerer appen?</summary>
-        <p>Vi sigter mod 1. januar. Du er den første til at høre om det, når det sker — helt uafhængigt af hvor mange andre der har tilmeldt sig.</p>
+        <p>Vi sigter mod 1. februar 2027. Du er den første til at høre om det, når det sker — helt uafhængigt af hvor mange andre der har tilmeldt sig.</p>
       </details>
       <details class="faq-item">
         <summary>Koster det noget at skrive sig op?</summary>
@@ -710,8 +710,8 @@
       document.getElementById('download-sektion').hidden = false;
     }
 
-    // ── Nedtælling til lancering (1. januar 2027, dansk tid) ──────────────
-    var launchDato = new Date('2027-01-01T00:00:00+01:00').getTime();
+    // ── Nedtælling til lancering (1. februar 2027, dansk tid) ─────────────
+    var launchDato = new Date('2027-02-01T00:00:00+01:00').getTime();
     function opdaterNedtælling() {
       var nu = new Date().getTime();
       var diff = Math.max(0, launchDato - nu);
