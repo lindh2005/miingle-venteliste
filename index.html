@@ -693,6 +693,15 @@
     // link, den dag appen er på App Store. Siden skifter så automatisk fra
     // venteliste-formular til en download-knap. Ingen anden ændring nødvendig.
     var LANCERET = false;
+    // ── Ventelisten er midlertidigt lukket for nye tilmeldinger (18/10-2026).
+    // Sæt til true for at åbne igen – og sæt app_indstillinger.venteliste_aaben = 'ja' i Supabase.
+    var VENTELISTE_AABEN = false;
+    if (!VENTELISTE_AABEN && !LANCERET) {
+      document.getElementById('venteliste-form').hidden = true;
+      var m = document.getElementById('melding');
+      m.textContent = 'Ventelisten åbner snart – kig forbi igen om lidt.';
+      m.className = 'melding vis'; m.style.background = 'var(--card)'; m.style.border = '1px solid var(--border)'; m.style.color = 'var(--text)';
+    }
     var APP_STORE_URL = 'https://apps.apple.com/app/idXXXXXXXXXX'; // udskift med rigtigt link ved lancering
 
     if (LANCERET) {
