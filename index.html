@@ -695,13 +695,16 @@
       </div>
 
       <div class="gave-punkter">
-        <div class="gave-punkt">👥&nbsp; <span><b>Hvem kan deltage:</b> Alle tilmeldt ventelisten med en gyldig emailadresse</span></div>
-        <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Den 1. februar 2027, samme dag Miingle lanceres</span></div>
-        <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes direkte på mailadressen de skrev sig op med</span></div>
-        <div class="gave-punkt">🎯&nbsp; <span><b>Én præmie pr. person:</b> Man kan maksimalt vinde én præmie, uanset puljens størrelse</span></div>
-        <div class="gave-punkt">🎟️&nbsp; <span><b>Flere lodder:</b> Inviter op til 2 venner — du får ét ekstra lod for hver ven der tilmelder sig via dit link og bekræfter sin email, op til 3 lodder i alt (se linket i din velkomstmail)</span></div>
+        <div class="gave-punkt">👥&nbsp; <span><b>Hvem kan deltage:</b> Alle, der skriver sig op på ventelisten og bekræfter deres email. Det er gratis, og der kræves intet køb.</span></div>
+        <div class="gave-punkt">⏳&nbsp; <span><b>Frist:</b> Du skal være tilmeldt og have bekræftet din email senest dagen før Miingle lanceres (vi forventer at lancere 1. februar 2027).</span></div>
+        <div class="gave-punkt">📅&nbsp; <span><b>Hvornår trækkes der lod:</b> Senest 2 uger efter lanceringen.</span></div>
+        <div class="gave-punkt">🎲&nbsp; <span><b>Sådan trækkes vinderne:</b> Ved tilfældig lodtrækning blandt alle deltagere. Alle har ét lod.</span></div>
+        <div class="gave-punkt">🎯&nbsp; <span><b>Én præmie pr. person:</b> Præmierne og deres værdi står ovenfor. Man kan højst vinde én præmie.</span></div>
+        <div class="gave-punkt">✉️&nbsp; <span><b>Sådan får du besked:</b> Vinderne kontaktes på den email, de skrev sig op med. Svarer en vinder ikke inden 14 dage, trækker vi en ny vinder.</span></div>
+        <div class="gave-punkt">📦&nbsp; <span><b>Levering:</b> Præmien sendes eller gives direkte af den samarbejdspartner, der har givet den, senest 14 dage efter at vinderen er fundet.</span></div>
+        <div class="gave-punkt">🏢&nbsp; <span><b>Arrangør:</b> Miingle ApS, CVR 41785942, Greve Main 42, 2670 Greve.</span></div>
       </div>
-      <div class="gdpr-linje">Din emailadresse bruges udelukkende til Miingle og deles ikke med vores samarbejdspartnere eller andre tredjeparter.</div>
+      <div class="gdpr-linje">Din emailadresse bruges kun af Miingle. Vinder du, deler vi din email med den samarbejdspartner, hvis præmie du har vundet – udelukkende så præmien kan leveres.</div>
     </div>
 
     <div class="faq">
@@ -844,12 +847,11 @@
       meldingBoks.className = 'melding vis ' + type;
     }
 
-    // Lodder tæller først, når emailen er bekræftet (link i velkomstmailen) — også for venner.
+    // Man er med i lodtrækningen, når emailen er bekræftet. Ét lod pr. person (ingen ekstra lodder for venner).
     function visLodderBadge(antal, afventer, bekraeftet) {
       var tekst = bekraeftet === false
         ? '✉️ Bekræft din email for at være med'
-        : '🎟️ ' + antal + (antal === 1 ? ' lod' : ' lodder');
-      if (afventer > 0) tekst += ' · ' + afventer + (afventer === 1 ? ' ven' : ' venner') + ' mangler at bekræfte';
+        : '🎟️ Du er med i lodtrækningen';
       lodderBadge.textContent = tekst;
       lodderBadge.hidden = false;
     }
