@@ -865,6 +865,8 @@
     // ── Henvisninger (?ref=) og eget lodder-tjek (?mine=) via URL ──────────
     var urlParams = new URLSearchParams(window.location.search);
     var henvistAfKode = urlParams.get('ref');
+    // Kampagnekode (?k=flyer, ?k=instagram, ?k=bibs …): gemmes som kilde, så vi kan se, hvor tilmeldinger kommer fra
+    var kampagneKode = urlParams.get('k');
     var mitToken = urlParams.get('mine');
     var bekraeftToken = urlParams.get('bekraeft');
 
@@ -909,6 +911,7 @@
       var emailInput = document.getElementById('email-input');
       var body = { email: emailInput.value };
       if (henvistAfKode) body.henvist_af_kode = henvistAfKode;
+      if (kampagneKode) body.kilde = kampagneKode;
 
       fetch(formular.action, {
         method: 'POST',
