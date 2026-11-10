@@ -447,6 +447,23 @@
     header { flex-wrap: wrap; }
     .card { padding: 22px 18px; }
   }
+  .praemie-klik { cursor: pointer; }
+  .praemie-klik:hover { border-color: var(--text-muted); }
+  .praemie-se { font-size: 12px; font-weight: 700; color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+  .pm-baggrund { position: fixed; inset: 0; background: rgba(42,33,27,.45); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+  .pm-baggrund.aaben { display: flex; }
+  .pm-kort { background: var(--card); border-radius: 18px; max-width: 420px; width: 100%; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.25); position: relative; }
+  .pm-kort img.pm-billede { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #fff; }
+  .pm-baggrund[hidden] { display: none; }
+  .pm-kort { max-height: calc(100vh - 40px); overflow-y: auto; }
+  .pm-top img { display: block; max-height: 36px; width: auto; }
+  .pm-indhold { padding: 18px 20px 20px; }
+  .pm-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .pm-vaerdi { font-size: 12px; font-weight: 700; background: #EBE1D2; border-radius: 99px; padding: 4px 10px; }
+  .pm-titel { font-size: 17px; font-weight: 700; margin: 0 0 8px; color: var(--text); }
+  .pm-tekst { font-size: 13.5px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+  .pm-luk { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); font-size: 18px; cursor: pointer; }
+
 </style>
 </head>
 <body>
@@ -522,248 +539,48 @@
            partner-fairness (alle eller ingen, aldrig "vis mere"-skjul). -->
       <div class="praemier-wrap">
         <div class="praemier-track">
-          <div class="praemie">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="Dulille" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="Mig og min store mave" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="Gaiasculpture" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="Sjælfuld" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="Tuttelu" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="BIBS" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="Caramma" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="Luksusbaby" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="That's Mine" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="ADA Baby Monitor" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-                    <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-                    <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-                    <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-                    <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-                    <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div>
-            <div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div>
-            <div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div>
-            <div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div>
-            <div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div>
-            <div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div>
-            <div class="praemie-tekst">Præmie venter</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div>
-            <div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div>
-            <div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div>
-            <div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500 kr. hver)</span></div>
-          </div>
-          <div class="praemie" aria-hidden="true">
-            <div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div>
-            <div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div>
-          </div>
-          </div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="dulille" aria-haspopup="dialog"><div class="praemie-logo"><img src="dulille.png" width="58" alt="DuLille" height="18"></div><div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="mmsm" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="Mig og min store mave" height="42"></div><div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="gaia" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="Gaiasculpture" height="36"></div><div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="sjaelfuld" aria-haspopup="dialog"><div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="Sjælfuld" height="24"></div><div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="tuttelu" aria-haspopup="dialog"><div class="praemie-logo"><img src="tuttelu.png" width="90" alt="Tuttelu" height="28"></div><div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie"><div class="praemie-logo"><img src="bibs.png" width="82" alt="BIBS" height="26"></div><div class="praemie-tekst">Præmie venter</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="caramma" aria-haspopup="dialog"><div class="praemie-logo"><img src="caramma.png" width="90" alt="Caramma" height="13"></div><div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" role="button" tabindex="0" data-praemie="luksusbaby" aria-haspopup="dialog"><div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="Luksusbaby" height="22"></div><div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie"><div class="praemie-logo"><img src="thatsmine.png" width="90" alt="That's Mine" height="23"></div><div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500&nbsp;kr. hver)</span></div></div>
+          <div class="praemie"><div class="praemie-logo"><img src="ada.png" width="60" alt="ADA Baby Monitor" height="22"></div><div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div></div>
+          <!-- Dubleret sæt — nødvendigt for sømløs uendelig loop (translateX -50%) -->
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="dulille" aria-haspopup="dialog"><div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div><div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="mmsm" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div><div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="gaia" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div><div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="sjaelfuld" aria-haspopup="dialog"><div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div><div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="tuttelu" aria-haspopup="dialog"><div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div><div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div><div class="praemie-tekst">Præmie venter</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="caramma" aria-haspopup="dialog"><div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div><div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="luksusbaby" aria-haspopup="dialog"><div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div><div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div><div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500&nbsp;kr. hver)</span></div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div><div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="dulille" aria-haspopup="dialog"><div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div><div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="mmsm" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div><div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="gaia" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div><div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="sjaelfuld" aria-haspopup="dialog"><div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div><div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="tuttelu" aria-haspopup="dialog"><div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div><div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div><div class="praemie-tekst">Præmie venter</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="caramma" aria-haspopup="dialog"><div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div><div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="luksusbaby" aria-haspopup="dialog"><div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div><div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div><div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500&nbsp;kr. hver)</span></div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div><div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="dulille" aria-haspopup="dialog"><div class="praemie-logo"><img src="dulille.png" width="58" alt="" height="18"></div><div class="praemie-tekst">3 × onlinekursus i babymassage + samtalekort (549 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="mmsm" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="migogminstoremave-vandret.png" width="120" alt="" height="42"></div><div class="praemie-tekst">3 × onlinekursus i amning (199 kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="gaia" aria-haspopup="dialog"><div class="praemie-logo" style="padding:0"><img src="gaiasculpture.png" width="106" alt="" height="36"></div><div class="praemie-tekst">1 × valgfri skulptur uden fod (2.400&#8288;–&#8288;4.200&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="sjaelfuld" aria-haspopup="dialog"><div class="praemie-logo"><img src="sjaelfuld.png" width="96" alt="" height="24"></div><div class="praemie-tekst">3 × 5 måneders adgang til Sjælfuld Samling (495&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="tuttelu" aria-haspopup="dialog"><div class="praemie-logo"><img src="tuttelu.png" width="90" alt="" height="28"></div><div class="praemie-tekst">1 × bleabonnement i én måned (ca. 270&#8288;–&#8288;315&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="bibs.png" width="82" alt="" height="26"></div><div class="praemie-tekst">Præmie venter</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="caramma" aria-haspopup="dialog"><div class="praemie-logo"><img src="caramma.png" width="90" alt="" height="13"></div><div class="praemie-tekst">1 × Support Kit sutteflasker, 150 + 300 ml (599&nbsp;kr.)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie praemie-klik" aria-hidden="true" role="button" tabindex="-1" data-praemie="luksusbaby" aria-haspopup="dialog"><div class="praemie-logo"><img src="luksusbaby.png" width="90" alt="" height="22"></div><div class="praemie-tekst">5 × gavekort til Luksusbaby (500&nbsp;kr. hver)</div><div class="praemie-se">Se præmien ›</div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="thatsmine.png" width="90" alt="" height="23"></div><div class="praemie-tekst">3 × gavekort til That's Mine <span style="white-space:nowrap">(500&nbsp;kr. hver)</span></div></div>
+          <div class="praemie" aria-hidden="true"><div class="praemie-logo"><img src="ada.png" width="60" alt="" height="22"></div><div class="praemie-tekst">2 × ADA Baby Monitor <span style="white-space:nowrap">(1.200&nbsp;kr. hver)</span></div></div>
+        </div>
       </div>
 
       <div class="gave-punkter">
@@ -1039,5 +856,146 @@
       });
     });
   </script>
+<div class="pm-baggrund" id="pm" role="dialog" aria-modal="true" aria-labelledby="pm-titel" hidden>
+  <div class="pm-kort">
+    <button class="pm-luk" type="button" aria-label="Luk">✕</button>
+    <img class="pm-billede" id="pm-billede" src="" alt="">
+    <div class="pm-indhold">
+      <div class="pm-top"><img id="pm-logo" src="" alt=""><span class="pm-vaerdi" id="pm-vaerdi"></span></div>
+      <h3 class="pm-titel" id="pm-titel"></h3>
+      <p class="pm-tekst" id="pm-tekst"></p>
+    </div>
+  </div>
+</div>
+<script>
+// Præmievinduet: ét vindue, indhold fra PRAEMIER efter data-praemie på det kort, man trykker på
+var PRAEMIER = {
+ "dulille": {
+  "billede": "praemier/dulille.jpg",
+  "alt": "Forælder giver en smilende baby massage",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "dulille.png",
+  "lb": 58,
+  "lh": 18,
+  "vaerdi": "549 kr. hver",
+  "titel": "3 × onlinekursus i babymassage + samtalekort",
+  "tekst": "Onlinekurset »Beroligende babymassage« lærer dig en blid massagerutine, der skaber kropslig ro, bedre søvn og styrker jeres relation. Du får videoguides og en kort rutine på ca. 11 minutter – perfekt som del af putterutinen – med adgang i app og browser. Med følger samtalekortene »Small Baby – Big Questions« med 71 spørgsmål på dansk og engelsk, der kan åbne for ærlige og nærværende samtaler om livet med en baby.",
+  "navn": "DuLille"
+ },
+ "mmsm": {
+  "billede": "praemier/mmsm.jpg",
+  "alt": "Mig og min store mave – logo",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "migogminstoremave-vandret.png",
+  "lb": 120,
+  "lh": 42,
+  "vaerdi": "199 kr. hver",
+  "titel": "3 × onlinekursus i amning",
+  "tekst": "Et onlinekursus i amning fra Mig og min store mave ved fødselsterapeut Frederikke Lykke, der blandt andet hjælper med amning og ammestillinger. Som hun selv skriver: Det er aldrig for sent at »starte forfra« med amningen – for amning må aldrig gøre ondt.",
+  "navn": "Mig og min store mave"
+ },
+ "gaia": {
+  "billede": "praemier/gaia.jpg",
+  "alt": "Hvid gravidskulptur fra Gaiasculpture",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "gaiasculpture.png",
+  "lb": 106,
+  "lh": 36,
+  "vaerdi": "2.400–4.200 kr.",
+  "titel": "1 × valgfri skulptur uden fod",
+  "tekst": "Gaiasculpture skaber unikke 3D-gravidskulpturer formet efter din egen krop – en smuk ting til dit hjem, som kan forevige den helt særlige tid, hvor din krop bar og skabte liv. Anne håndlaver alt, lige fra scanningen til det sidste penselstrøg: Figuren printes i bioplast og slibes og males derefter i hånden. Skulpturerne laves i tre størrelser (11, 13 og 15 cm), og du vælger selv posering, coating og finish.",
+  "navn": "Gaiasculpture"
+ },
+ "sjaelfuld": {
+  "billede": "praemier/sjaelfuld.jpg",
+  "alt": "Gravid kvinde med blomsterkrans og hænderne på maven",
+  "fit": null,
+  "pos": "50% 35%",
+  "logo": "sjaelfuld.png",
+  "lb": 96,
+  "lh": 24,
+  "vaerdi": "495 kr. hver",
+  "titel": "3 × 5 måneders adgang til Sjælfuld Samling",
+  "tekst": "Sjælfuld Samling er et kærligt univers med meditationer, viden og guidning, der hjælper dig med at finde ro i kroppen, styrke forbindelsen til dit barn og gå din graviditet, fødsel og moderskab i møde med mere tryghed. Du får guidede meditationer, viden og dokumenter om graviditet, fødsel og barsel, øvelser der støtter kroppen og små videoer, du kan vende tilbage til igen og igen. Samlingen ligger i Sjælfuld-appen og er skabt af jordemoder og healer Mie Malene.",
+  "navn": "Sjælfuld"
+ },
+ "tuttelu": {
+  "billede": "praemier/tuttelu.jpg",
+  "alt": "Baby i Tuttelu-ble på en seng",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "tuttelu.png",
+  "lb": 90,
+  "lh": 28,
+  "vaerdi": "ca. 270–315 kr.",
+  "titel": "1 × bleabonnement i én måned",
+  "tekst": "Med Tuttelus bleabonnement får du bleer leveret direkte til døren – 5 pakker i valgfri størrelser svarer til en måneds forbrug. Bleerne har mere bambus, som erstatter noget af plastikken, er bløde mod huden, suger op til 2x mere end traditionelle bleer og har elastik i både ryggen og om benene. Materialerne er OEKO-TEX® certificerede, og indpakningen er lavet med 82 % genanvendt papir.",
+  "navn": "Tuttelu"
+ },
+ "caramma": {
+  "billede": "praemier/caramma.jpg",
+  "alt": "Caramma Support Kit: to sutteflasker og et ekstra suttehoved",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "caramma.png",
+  "lb": 90,
+  "lh": 13,
+  "vaerdi": "599 kr.",
+  "titel": "1 × Support Kit sutteflasker (150 + 300 ml)",
+  "tekst": "Et Support Kit giver dig, hvad du behøver for at komme godt fra start: en lille flaske (150 ml), en stor flaske (300 ml) og et ekstra suttehoved. Det patenterede ventilsystem giver et langsomt, naturligt flow i alle spisestillinger, og det luftfri system er anti-kolik. Flaskerne er lavet af blød silikone, designet til at undgå mikroplast, og er udviklet sammen med forældre og sundhedspersonale. Designet i Danmark og vinder af Danish Design Award 2024.",
+  "navn": "Caramma"
+ },
+ "luksusbaby": {
+  "billede": "praemier/luksusbaby.jpg",
+  "alt": "Gavekort fra Luksusbaby med brunt gavebånd",
+  "fit": null,
+  "pos": "50% 50%",
+  "logo": "luksusbaby.png",
+  "lb": 90,
+  "lh": 22,
+  "vaerdi": "500 kr. hver",
+  "titel": "5 × gavekort til Luksusbaby",
+  "tekst": "Luksusbaby sælger børnetøj, legetøj og udstyr. For Luksusbaby er et gavekort ikke kun et stykke pap eller papir, men nærmere et stykke lækkert tøj, legetøj eller noget helt andet, der bare ikke er købt endnu. På gavekortet står en gavekortkode, som nemt kan bruges i shoppen.",
+  "navn": "Luksusbaby"
+ }
+};
+(function(){
+  var m=document.getElementById('pm'), sidst=null;
+  function $(id){return document.getElementById(id)}
+  function aabn(id, fra){
+    var p=PRAEMIER[id]; if(!p) return;
+    var b=$('pm-billede'); b.src=p.billede; b.alt=p.alt||p.titel; b.style.objectFit=p.fit||'cover'; b.style.objectPosition=p.pos||'50% 50%';
+    var l=$('pm-logo'); l.src=p.logo; l.alt=p.navn; l.width=p.lb; l.height=p.lh;
+    $('pm-vaerdi').textContent='Værdi '+p.vaerdi;
+    $('pm-titel').textContent=p.titel;
+    $('pm-tekst').textContent=p.tekst;
+    sidst=fra||null; m.hidden=false; m.classList.add('aaben');
+    if(fra) m.querySelector('.pm-luk').focus({preventScroll:true});
+  }
+  function luk(){ if(!m.classList.contains('aaben')) return; m.classList.remove('aaben'); m.hidden=true; if(sidst) sidst.focus({preventScroll:true}); }
+  document.querySelectorAll('.praemie-klik').forEach(function(k){
+    k.addEventListener('click',function(){aabn(k.dataset.praemie,k)});
+    k.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();aabn(k.dataset.praemie,k)}});
+  });
+  m.addEventListener('click',function(e){if(e.target===m||e.target.closest('.pm-luk'))luk()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')luk()});
+  var h=location.hash.match(/^#praemie=([a-z0-9-]+)/); if(h) aabn(h[1]);
+})();
+</script>
+
+<script>
+// Pause båndet med Web Animations API i stedet for CSS :hover — Safari springer, når en kørende transform-animation pauses med animation-play-state
+(function(){var w=document.querySelector('.praemier-wrap'),t=document.querySelector('.praemier-track');if(!w||!t||!t.getAnimations)return;
+function a(){return t.getAnimations()[0]}
+// Båndet står stille, mens musen er over det, OG mens et præmievindue er åbent – så kortet bliver, hvor man klikkede
+var over=false,m=document.getElementById('pm');
+function opdater(){var x=a();if(!x)return;var aaben=m&&m.classList.contains('aaben');if(over||aaben)x.pause();else x.play()}
+w.addEventListener('pointerenter',function(){over=true;opdater()});
+w.addEventListener('pointerleave',function(){over=false;opdater()});
+if(m&&window.MutationObserver)new MutationObserver(opdater).observe(m,{attributes:true,attributeFilter:['class']});})();
+</script>
 </body>
 </html>
