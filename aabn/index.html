@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Åbn Miingle</title>
+<style>
+  :root { --background:#F6F0E6; --card:#FFFFFF; --border:#DCCFBB; --brand:#2A211B; --muted:#6E6052; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px;
+         background:var(--background); color:var(--brand); font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif; }
+  .kort { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px 24px; max-width:420px; width:100%; text-align:center; }
+  img { width:140px; height:auto; margin-bottom:16px; }
+  h1 { font-size:20px; margin:0 0 8px; }
+  p { font-size:15px; line-height:22px; color:var(--muted); margin:0 0 20px; }
+  a.knap { display:inline-block; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; padding:14px 32px; border-radius:12px; font-size:16px; }
+  .kode { margin-top:20px; font-size:13px; color:var(--muted); }
+  .kode b { display:block; margin-top:8px; font-size:26px; letter-spacing:6px; color:var(--brand); }
+</style>
+</head>
+<body>
+<div class="kort">
+  <img src="/logo-vandret.png" alt="Miingle">
+  <h1>Åbner Miingle …</h1>
+  <p>Hvis appen ikke åbner af sig selv, så tryk på knappen.</p>
+  <a class="knap" id="aabn" href="#">Åbn i Miingle</a>
+  <div class="kode" id="kodeboks" hidden>Virker knappen ikke? Skriv koden i appen:<b id="kode"></b></div>
+</div>
+<script>
+// Mailprogrammer (fx Gmail) gør links, der starter med miingle://, døde. Mailen peger derfor hertil,
+// og siden sender videre til appen med de samme oplysninger (email, code, type).
+(function () {
+  var s = new URLSearchParams(location.search);
+  var ud = new URLSearchParams();
+  ['email', 'code', 'type'].forEach(function (k) { if (s.get(k)) ud.set(k, s.get(k)); });
+  var link = 'miingle://login' + (ud.toString() ? '?' + ud.toString() : '');
+  document.getElementById('aabn').href = link;
+  if (s.get('code')) { document.getElementById('kode').textContent = s.get('code'); document.getElementById('kodeboks').hidden = false; }
+  if (s.get('code')) location.href = link;
+})();
+</script>
+</body>
+</html>
