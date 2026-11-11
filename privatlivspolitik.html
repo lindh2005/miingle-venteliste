@@ -4,39 +4,165 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privatlivspolitik — Miingle</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<meta name="description" content="Sådan behandler Miingle ApS dine personoplysninger i appen og på ventelisten.">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="fonts/playfair.css">
 <style>
+  :root { --bg: #F6F0E6; --tekst: #2A211B; --daempet: #6B5D52; --kant: #E4D9C8; --kort: #FFFFFF; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    background: #F6F0E6; /* --background */
-    color: #2A211B; /* --text */
+    background: var(--bg); color: var(--tekst);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* systemskrift = samme som appen */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 480px; padding: 32px 24px; text-align: center; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 32px; }
-  h1 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 28px; margin-bottom: 16px; }
-  p { font-size: 15px; line-height: 1.6; opacity: 0.85; margin-bottom: 24px; }
-  a { color: #2A211B; /* --brand-dark */ }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+  .top img { height: 34px; width: auto; display: block; }
+  .top a.tilbage { font-size: 14px; color: var(--tekst); text-decoration: none; border: 1px solid var(--kant); background: var(--kort); padding: 8px 14px; border-radius: 99px; }
+  h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(32px, 6vw, 44px); line-height: 1.15; margin-bottom: 10px; }
+  .dato { color: var(--daempet); font-size: 14px; margin-bottom: 20px; }
+  .intro { font-size: 17px; margin-bottom: 28px; }
+  nav { background: var(--kort); border: 1px solid var(--kant); border-radius: 16px; padding: 20px 22px; margin-bottom: 40px; }
+  nav strong { display: block; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--daempet); margin-bottom: 10px; }
+  nav ol { columns: 2 260px; column-gap: 28px; padding-left: 20px; font-size: 15px; }
+  nav li { margin-bottom: 4px; break-inside: avoid; }
+  nav a { color: var(--tekst); text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  section { margin-bottom: 34px; scroll-margin-top: 20px; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 24px; line-height: 1.25; margin-bottom: 12px; }
+  p { margin-bottom: 12px; }
+  ul { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--tekst); }
+  footer { border-top: 1px solid var(--kant); margin-top: 48px; padding-top: 20px; font-size: 13px; color: var(--daempet); }
+  @media print { nav, .top a.tilbage { display: none; } body { background: #fff; } }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="logo">Miingle</div>
-    <h1>Privatlivspolitikken er på vej</h1>
-    <p>
-      Vi er i gang med at få vores privatlivspolitik gennemgået og godkendt af advokat,
-      så den er helt på plads inden lancering. Den fulde tekst er tilgængelig her snarest.
-    </p>
-    <p>Har du spørgsmål i mellemtiden, er du velkommen til at skrive til
-      <a href="mailto:support@miingle.dk">support@miingle.dk</a>.
-    </p>
-    <p style="font-size: 13px;">Dataansvarlig: Miingle&nbsp;ApS, CVR&nbsp;41785942<br>Greve&nbsp;Main&nbsp;42, 2670&nbsp;Greve</p>
+    <div class="top">
+      <a href="./" aria-label="Miingle – til forsiden"><img src="logo-vandret.png" alt="Miingle"></a>
+      <a class="tilbage" href="./">← Til ventelisten</a>
+    </div>
+    <h1>Privatlivspolitik</h1>
+    <p class="dato">Senest opdateret: 11. november 2026</p>
+    <p class="intro">I denne privatlivspolitik kan du læse, hvordan vi håndterer dine personoplysninger, når du bruger Miingle-appen, skriver dig op på vores venteliste eller på anden måde er i kontakt med Miingle.</p>
+    <nav aria-label="Indhold"><strong>Indhold</strong><ol><li><a href="#dataansvarlig">Dataansvarlig</a></li><li><a href="#din-profil-og-brug-af-appen">Din profil og brug af appen</a></li><li><a href="#din-gruppe">Din gruppe</a></li><li><a href="#artikler-og-laesehistorik">Artikler og læsehistorik</a></li><li><a href="#ventelisten">Ventelisten</a></li><li><a href="#henvendelser">Henvendelser</a></li><li><a href="#indhold-paa-sociale-medier-og-hjemmesiden">Indhold på sociale medier og hjemmesiden</a></li><li><a href="#rapportering-eller-blokering">Rapportering eller blokering</a></li><li><a href="#markedsfoering">Markedsføring</a></li><li><a href="#lodtraekninger">Lodtrækninger</a></li><li><a href="#push-notifikationer">Push-notifikationer</a></li><li><a href="#appens-teknologi-og-opdateringer">Appens teknologi og opdateringer</a></li><li><a href="#hvordan-behandler-vi-dine-oplysninger">Hvordan behandler vi dine oplysninger?</a></li><li><a href="#modtagere-eller-kategorier-af-modtagere">Modtagere eller kategorier af modtagere</a></li><li><a href="#overfoersel-af-personoplysninger-til-tredjelande">Overførsel af personoplysninger til tredjelande</a></li><li><a href="#sikkerhed">Sikkerhed</a></li><li><a href="#retten-til-at-traekke-dit-samtykke-tilbage">Retten til at trække dit samtykke tilbage</a></li><li><a href="#dine-rettigheder">Dine rettigheder</a></li><li><a href="#klage-til-datatilsynet">Klage til Datatilsynet</a></li><li><a href="#har-du-spoergsmaal">Har du spørgsmål?</a></li></ol></nav>
+    <section id="dataansvarlig">
+<h2>Dataansvarlig</h2>
+<p>Miingle ApS er dataansvarlig for de oplysninger, som indsamles om brugere af appen, personer på vores venteliste, besøgende på vores hjemmeside og andre parter. Vi sørger for, at behandling af personoplysninger sker i overensstemmelse med den til enhver tid gældende lovgivning.</p>
+<p>Vores kontaktoplysninger er:</p>
+<ul><li>Miingle ApS</li><li>CVR-nr. 41785942</li><li>Adresse: Greve Main 42, 2670 Greve</li><li>E-mail: <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a></li></ul>
+</section>
+<section id="din-profil-og-brug-af-appen">
+<h2>Din profil og brug af appen</h2>
+<p>Når du som forælder eller værge opretter en profil på platformen med henblik på at mødes og netværke med andre forældre på tværs af fællesskabet, behandler vi oplysninger om dig og dit barn for at kunne facilitere kontakten mellem brugerne og understøtte platformens formål.</p>
+<p>Når du opretter og udfylder en profil hos os, behandler vi almindelige personoplysninger om dig, herunder navn, e-mailadresse, fødselsdato, profilbillede, om du er mor eller far, bydel og sprogvalg samt dine børns fornavn, fødselsdato og køn. Vi bruger din bydel til at matche dig med forældre og børn i samme område. Din telefons præcise placering (GPS) bruges kun på din telefon til at vise afstanden til aktiviteter og gemmes ikke hos os.</p>
+<p>Når du bruger appen, behandler vi også dine venskaber, beskeder, de grupper, du opretter eller er medlem af, dine tilmeldinger til aktiviteter og oplæg, bedømmelser efter aktiviteter samt eventuelle advarsler ved sen afmelding, udeblivelse eller rapporter om, at en deltager ikke var den person, profilen viser.</p>
+<p>Ved køb behandler vi oplysninger om købet: Abonnementet Miingle Plus betales via App Store eller Google Play, og billetter til gåture og oplæg betales via vores betalingsudbyder Stripe. Vi modtager ikke dine kortoplysninger.</p>
+<p>Formålet med disse behandlinger er at kunne levere vores ydelser i overensstemmelse med den indgåede aftale, herunder administrere platformens funktioner, fx at understøtte netværk og sociale fællesskaber ved at facilitere kontakt mellem forældre og børn i forbindelse med aktiviteter, oplæg og øvrige arrangementer på platformen. Vores hjemmel til behandling af ovenstående personoplysninger er således opfyldelsen af den kontrakt, du indgår med os, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra b.</p>
+<p>Behandlingen af dine børns fornavne og alder sker på baggrund af vores legitime interesse, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f. Vores legitime interesse er i helhed at tjene formålet med Miingle og sætte dig og dine børn i forbindelse med forældre og børn af interesse.</p>
+<p>Du kan til enhver tid slette din profil i appen under Profil → Indstillinger → Slet min konto. Så slettes din profil, dine børns oplysninger, dine beskeder, venskaber og tilmeldinger. Oplysninger om køb opbevarer vi dog, så længe bogføringsloven kræver det.</p>
+<p>Vi opbevarer dine personoplysninger, så længe din brugerprofil er aktiv, og det er nødvendigt for at levere platformens funktioner. Hvis de registrerede oplysninger ikke længere er nødvendige for formålet, slettes eller anonymiseres de. Er din profil inaktiv, sletter vi som udgangspunkt oplysningerne senest 3 år efter, at profilen er blevet inaktiv. Bogføringsmateriale opbevares i 5 år fra afslutningen af det regnskabsår, som posten relaterer sig til. Oplysninger, der behandles på grundlag af dit samtykke, slettes, hvis du trækker samtykket tilbage.</p>
+</section>
+<section id="din-gruppe">
+<h2>Din gruppe</h2>
+<p>Hvis du melder dig til Din gruppe – små grupper for mødre i samme bydel – bruger vi din bydel, at du er mor, og dit yngste barns fødselsdato (eller at du venter barn) til at sætte dig i gruppe med andre mødre med børn på nogenlunde samme alder. Medlemmerne af gruppen kan se dit navn og profilbillede og skrive med dig i gruppens chat, hvor Miingle også kan stille isbryder-spørgsmål.</p>
+<p>Vi gemmer, hvilke grupper du har været med i, så du ikke bliver sat tilbage i en gruppe, du har forladt, og vi sætter aldrig to personer, der har blokeret hinanden, i samme gruppe.</p>
+<p>Tilmeldingen er frivillig, og behandlingen sker for at levere den funktion, du har bedt om, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra b. Oplysningerne slettes sammen med din profil.</p>
+</section>
+<section id="artikler-og-laesehistorik">
+<h2>Artikler og læsehistorik</h2>
+<p>Når du har læst en artikel i appen, gemmer vi, at du har læst den, så vi kan vise »✓ Læst« ved artiklen. Nogle artikler handler om emner, der kan være personlige, fx børn med særlige behov. Vi bruger derfor kun læsehistorikken til denne visning – ikke til markedsføring, profilering eller statistik – og andre brugere kan ikke se den.</p>
+<p>Behandlingen sker på grundlag af vores legitime interesse i at gøre appen nem at bruge, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f. Læsehistorikken slettes sammen med din profil.</p>
+</section>
+<section id="ventelisten">
+<h2>Ventelisten</h2>
+<p>Når du skriver dig op på ventelisten på <a href="https://venteliste.miingle.dk">venteliste.miingle.dk</a>, behandler vi din e-mailadresse, tidspunktet for din tilmelding og bekræftelse og – hvis du kom via et særligt link, fx fra en flyer, Instagram eller en samarbejdspartner – hvilken kanal du kom fra.</p>
+<p>Vi bruger din e-mailadresse til at bekræfte tilmeldingen, sende dig e-mails om lanceringen og din personlige rabatkode og til at afgøre, om du kan deltage i lodtrækningen (se afsnittet om lodtrækninger). E-mails om lanceringen sender vi på grundlag af dit samtykke, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a, og markedsføringslovens § 10. Oplysningen om kanal bruger vi samlet til at se, hvilken markedsføring der virker, på grundlag af vores legitime interesse, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f.</p>
+<p>Du kan til enhver tid afmelde dig via linket i vores e-mails eller ved at skrive til <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a>. Vi sletter ventelisten senest 6 måneder efter, at appen er lanceret. Opretter du en profil i appen, gælder afsnittene om appen for dine oplysninger der.</p>
+<p>Vores venteliste-side bruger ikke cookies, statistik eller sporing.</p>
+</section>
+<section id="henvendelser">
+<h2>Henvendelser</h2>
+<p>Hvis du kontakter os via e-mail eller i forbindelse med andre henvendelser, behandler vi almindelige personoplysninger om dig i form af navn, e-mailadresse, adresse, arbejdssted, stilling og eventuelle andre personoplysninger, som fremgår af din henvendelse.</p>
+<p>Vi behandler dine personoplysninger på grundlag af databeskyttelsesforordningens artikel 6, stk. 1, litra f, om legitim interesse. Vores legitime interesse er at kunne modtage, følge op på og besvare din henvendelse.</p>
+<p>Vi opbevarer som udgangspunkt din henvendelse i 1 år. Der kan dog være omstændigheder, som gør, at vi opbevarer din henvendelse i længere tid.</p>
+</section>
+<section id="indhold-paa-sociale-medier-og-hjemmesiden">
+<h2>Indhold på sociale medier og hjemmesiden</h2>
+<p>Vi laver opslag på sociale medier som Facebook, Instagram, LinkedIn mv. og på vores hjemmeside med det formål at oplyse om vores ydelser og vise tilbagemeldinger fra brugere og samarbejdspartnere. I den forbindelse behandler vi almindelige personoplysninger om deltagere i opslagene i form af navn, eventuelt arbejdssted, stilling og billede.</p>
+<p>Vi behandler personoplysningerne på grundlag af databeskyttelsesforordningens artikel 6, stk. 1, litra a, om samtykke.</p>
+<p>Vi sletter oplysningerne løbende og senest 5 år efter publiceringen af indholdet. Der kan dog være særlige omstændigheder, som gør, at vi er berettiget eller forpligtet til at opbevare oplysningerne i en længere periode.</p>
+</section>
+<section id="rapportering-eller-blokering">
+<h2>Rapportering eller blokering</h2>
+<p>Når du bruger rapporterings- eller blokeringsknappen i appen, behandler vi de personoplysninger, der er nødvendige for at håndtere din rapportering eller blokering. Det kan omfatte oplysninger om din profil og den berørte bruger, det rapporterede indhold, din begrundelse samt tidspunktet for rapporteringen eller blokeringen. Formålet er at gennemføre blokeringen, undersøge rapporteringen og træffe relevante foranstaltninger, eksempelvis at fjerne indhold eller begrænse en brugers adgang til appen.</p>
+<p>Behandlingen sker på grundlag af databeskyttelsesforordningens artikel 6, stk. 1, litra f. Vores legitime interesse er at opretholde sikkerhed og ordentlighed i appen, beskytte brugerne mod stødende eller krænkende indhold og adfærd samt håndhæve vores brugsvilkår. Vi behandler kun oplysningerne i det omfang, det er nødvendigt til disse formål, og dine interesser eller grundlæggende rettigheder og frihedsrettigheder ikke går forud for vores legitime interesse. I det omfang behandlingen er nødvendig for at opfylde en konkret retlig forpligtelse, sker den på grundlag af databeskyttelsesforordningens artikel 6, stk. 1, litra c.</p>
+<p>Vi opbevarer oplysningerne, så længe det er nødvendigt for at håndtere rapporteringen, opretholde blokeringen og følge op på eventuelle overtrædelser. Herefter slettes oplysningerne, medmindre fortsat opbevaring er nødvendig for at overholde en retlig forpligtelse eller fastlægge, gøre gældende eller forsvare et retskrav.</p>
+</section>
+<section id="markedsfoering">
+<h2>Markedsføring</h2>
+<p>Hvis du tilmelder dig vores nyhedsbrev, behandler vi din e-mailadresse for at sende dig nyhedsbreve med nyheder og markedsføring inden for de emner, som dit samtykke omfatter. Behandlingen af dine personoplysninger er baseret på dit samtykke, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a. Fremsendelsen af nyhedsbreve med markedsføring sker på baggrund af dit forudgående samtykke efter markedsføringslovens § 10, stk. 1.</p>
+<p>Det er frivilligt at tilmelde sig nyhedsbrevet. Du kan til enhver tid trække dit samtykke tilbage, let og gratis, via afmeldingslinket i hvert nyhedsbrev. Herefter ophører vi med at sende dig nyhedsbreve. Tilbagetrækningen påvirker ikke lovligheden af den behandling af dine personoplysninger, der er sket på baggrund af dit samtykke inden tilbagetrækningen.</p>
+</section>
+<section id="lodtraekninger">
+<h2>Lodtrækninger</h2>
+<p>Hvis du deltager i en lodtrækning, behandler vi din e-mailadresse og de oplysninger, der er nødvendige for at afgøre, om du opfylder betingelserne for at deltage, for at trække lod og for at kontakte vinderne. Vinder du en præmie fra en af vores samarbejdspartnere, videregiver vi dit navn og din e-mailadresse til samarbejdspartneren – udelukkende så præmien kan leveres. Behandlingen sker for at opfylde vilkårene for lodtrækningen, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra b.</p>
+<p>Vi sletter oplysningerne om din deltagelse, når lodtrækningen er afsluttet og præmierne er leveret, medmindre vi skal opbevare dem længere for at overholde en retlig forpligtelse.</p>
+</section>
+<section id="push-notifikationer">
+<h2>Push-notifikationer</h2>
+<p>Vi sender push-notifikationer om fx beskeder, venner, dine tilmeldinger og nye aktiviteter og fællesskaber i din bydel. Det sker på grundlag af vores legitime interesse i at give dig relevant information om din brug af Miingle, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f. Du vælger selv i appen, hvilke typer notifikationer du vil have.</p>
+<p>Notifikationer om tilbud og partnerfordele er markedsføring og sendes kun, hvis du har givet samtykke til det på samtykkeskærmen eller under Profil → Indstillinger → Privatliv og samtykke, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a. For at gøre indholdet relevant bruger vi din bydel og dine børns alder – ikke din præcise placering. Du kan til enhver tid trække dit samtykke tilbage samme sted i appen.</p>
+</section>
+<section id="appens-teknologi-og-opdateringer">
+<h2>Appens teknologi og opdateringer</h2>
+<p>Når du bruger vores app, behandler vi tekniske oplysninger for at kunne drive, sikre og forbedre appen:</p>
+<ul><li>Fejl- og nedbrudsrapporter (fx enhedstype, styresystem, appversion og tidspunkt) via Sentry, som er placeret i EU. Det sker på grundlag af vores legitime interesse i at kunne finde og rette fejl, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f. Rapporterne slettes efter 30 dage.</li><li>Brugsstatistik via PostHog, som er placeret i EU – kun hvis du har givet samtykke til det på samtykkeskærmen eller under Profil → Indstillinger → Privatliv og samtykke, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a. Statistikken bruges til at forbedre appen og slettes efter 1 år.</li><li>Et push-token, så vi kan sende de notifikationer, du har valgt.</li><li>En anonym optælling af klik på vores samarbejdspartneres links og fordele. Vi gemmer ikke, hvem der har klikket.</li></ul>
+<p>Vi bruger ikke annoncer, remarketing eller sporing på tværs af andre virksomheders apps og hjemmesider, og vi deler ikke dine oplysninger med annoncører.</p>
+<p>Løbende opdateringer af Miingle sker som udgangspunkt uden behandling af personoplysninger. Skulle dine personoplysninger undtagelsesvist indgå i forbindelse med opdateringer, drift mv., vil denne behandling være baseret på vores legitime interesse, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f. Vores legitime interesse er at tilbyde og videreudvikle en platform, der gør det muligt for forældre at finde, komme i kontakt med og udveksle erfaringer med andre forældre i lignende situationer, herunder forældre i deres nærområde. Det samme gør sig gældende for vores eventuelle brug af AI-løsninger, der også som udgangspunkt sker uden brug af personoplysninger, men alene ved anonyme data.</p>
+<p>Se mere i vores cookiepolitik, hvor opbevarings- og slettefrister ligeledes fremgår.</p>
+</section>
+<section id="hvordan-behandler-vi-dine-oplysninger">
+<h2>Hvordan behandler vi dine oplysninger?</h2>
+<p>For at kunne tilbyde dig vores ydelser og en god app er det nødvendigt for os at behandle dine personoplysninger ved at indsamle, registrere, systematisere, opbevare, bruge, gemme, slette, overføre og videregive dine oplysninger.</p>
+</section>
+<section id="modtagere-eller-kategorier-af-modtagere">
+<h2>Modtagere eller kategorier af modtagere</h2>
+<p>Vi kan videregive eller overlade dine personoplysninger til vores databehandlere, rådgivere (fx advokat), andre eksterne leverandører eller samarbejdspartnere, der bistår os med forskellige ydelser, tredjepartsløsninger eller driften af vores virksomhed, samt offentlige myndigheder, herunder Skattestyrelsen og domstolene. Vi sælger aldrig dine personoplysninger.</p>
+<p>Vores databehandlere er bl.a. Supabase (database, EU), PostHog (brugsstatistik, EU), Sentry (fejlrapporter, EU), Stripe (betaling af billetter), RevenueCat (administration af abonnementer), Apple og Google (App Store og Google Play), Expo (push-notifikationer), Google Workspace (e-mail), Resend (udsendelse af e-mails), DeepL (oversættelse af vores eget indhold – aldrig brugernes beskeder), Google Maps (opslag af adresser), Cloudflare (beskyttelse af login mod misbrug) og GitHub (drift af vores venteliste-side).</p>
+</section>
+<section id="overfoersel-af-personoplysninger-til-tredjelande">
+<h2>Overførsel af personoplysninger til tredjelande</h2>
+<p>I visse tilfælde overfører vi dine personoplysninger til modtagere i tredjelande. Dette sker, når vi gør brug af databehandlere uden for EU eller EØS. Overførselsgrundlaget er EU-Kommissionens standardkontraktbestemmelser eller andre fornødne garantier i henhold til databeskyttelsesforordningens artikel 46, hvis EU-Kommissionen ikke har truffet afgørelse om tilstrækkeligheden af tredjelandets beskyttelsesniveau. Du kan kontakte <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a>, hvis du ønsker oplysninger om, hvordan du kan få en kopi af det relevante overførselsgrundlag, eller hvor det er gjort tilgængeligt.</p>
+</section>
+<section id="sikkerhed">
+<h2>Sikkerhed</h2>
+<p>De oplysninger, som du giver os, eller som vi får om dig fra andre, sørger vi for at opbevare sikkert og fortroligt. Teknisk sørger vi for altid at bruge databehandlere, som vi har sikret os har den samme sikkerhed omkring dine oplysninger, som vi har, og internt har vi fokus på høj datasikkerhed. Når det er hensigtsmæssigt, krypterer, pseudonymiserer eller anonymiserer vi dine personoplysninger.</p>
+<p>Vi har truffet passende tekniske og organisatoriske foranstaltninger mod, at dine personoplysninger hændeligt eller ulovligt bliver slettet, offentliggjort, fortabt, forringet eller kommer til uvedkommendes kendskab, misbruges eller i øvrigt behandles i strid med den til enhver tid gældende lovgivning.</p>
+<p>Vi sletter dine personoplysninger, når vi ikke længere har brug for at behandle dem til at opfylde et eller flere af de formål, som vi har nævnt ovenfor. Der kan være særlige regler i love, som eksempelvis bogførings-, hvidvask- og forældelsesloven, der giver os ret og pligt til at opbevare dem i længere tid.</p>
+</section>
+<section id="retten-til-at-traekke-dit-samtykke-tilbage">
+<h2>Retten til at trække dit samtykke tilbage</h2>
+<p>Du har til enhver tid ret til at trække dit samtykke til vores behandling af dine personoplysninger tilbage. Det kan du gøre i appen under Profil → Indstillinger → Privatliv og samtykke, via afmeldingslinket i vores e-mails eller ved at sende en e-mail til <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a>. Tilbagetrækningen påvirker ikke lovligheden af vores behandling på baggrund af dit tidligere samtykke frem til tilbagetrækningen. Den har derfor først virkning fra det tidspunkt.</p>
+</section>
+<section id="dine-rettigheder">
+<h2>Dine rettigheder</h2>
+<p>Du har en række rettigheder i forhold til vores behandling af dine personoplysninger:</p>
+<ul><li>Ret til at se oplysninger (indsigtsret)</li><li>Ret til berigtigelse (rettelse)</li><li>Ret til sletning</li><li>Ret til begrænsning af behandling</li><li>Ret til indsigelse</li><li>Ret til at transmittere oplysninger (dataportabilitet)</li></ul>
+<p>Du kan læse mere om dine rettigheder i Datatilsynets vejledning om de registreredes rettigheder på <a href="https://www.datatilsynet.dk" rel="noopener">www.datatilsynet.dk</a>. Hvis du vil gøre brug af dine rettigheder, kan du sende en e-mail til <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a>.</p>
+</section>
+<section id="klage-til-datatilsynet">
+<h2>Klage til Datatilsynet</h2>
+<p>Hvis du er utilfreds med vores behandling af dine personoplysninger, kan du klage til Datatilsynet, Carl Jacobsens Vej 35, 2500 Valby, telefon 33 19 32 00, e-mail <a href="mailto:dt@datatilsynet.dk">dt@datatilsynet.dk</a>.</p>
+</section>
+<section id="har-du-spoergsmaal">
+<h2>Har du spørgsmål?</h2>
+<p>Hvis du har spørgsmål til vores behandling af dine personoplysninger, er du altid velkommen til at skrive til <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a>.</p>
+</section>
+    <footer>Miingle ApS · CVR 41785942 · Greve Main 42, 2670 Greve · <a href="mailto:privacy@miingle.dk">privacy@miingle.dk</a></footer>
   </div>
 </body>
 </html>
