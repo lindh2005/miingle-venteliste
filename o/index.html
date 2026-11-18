@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Miingle – Du er inviteret med til et oplæg 🤍</title>
+<meta property="og:title" content="Du er inviteret med til et oplæg 🤍">
+<meta property="og:description" content="Oplægget ligger i Miingle – appen, hvor forældre i København mødes til gåture, oplæg og meget mere.">
+<meta property="og:image" content="https://venteliste.miingle.dk/logo.png">
+<style>
+  :root { --background:#F6F0E6; --card:#FFFFFF; --border:#DCCFBB; --brand:#2A211B; --muted:#6E6052; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px;
+         background:var(--background); color:var(--brand); font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif; }
+  .kort { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px 24px; max-width:420px; width:100%; text-align:center; }
+  img { width:140px; height:auto; margin-bottom:16px; }
+  h1 { font-size:21px; margin:0 0 8px; }
+  p { font-size:15px; line-height:22px; color:var(--muted); margin:0 0 22px; }
+  a.knap { display:block; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; padding:14px 20px; border-radius:12px; font-size:16px; }
+  a.lille { display:inline-block; margin-top:16px; color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<div class="kort">
+  <img src="/logo-vandret.png" alt="Miingle">
+  <h1>Du er inviteret med til et oplæg 🤍</h1>
+  <p id="tekst">Oplægget ligger i Miingle – appen, hvor forældre i København mødes til gåture, oplæg og meget mere.</p>
+  <a class="knap" id="hent" href="https://venteliste.miingle.dk/?k=del">Skriv dig op på ventelisten</a>
+  <a class="lille" id="aabn" href="#">Har du allerede Miingle? Åbn i appen</a>
+</div>
+<script>
+// Delt link fra appen (utils/del.ts). Har man Miingle, åbner iOS appen direkte (universelt link via
+// /.well-known/apple-app-site-association) – så vises denne side slet ikke. Ellers: App Store, når appen er live
+// (app_indstillinger.app_er_live = 'ja'), og ventelisten indtil da.
+(function () {
+  var id = new URLSearchParams(location.search).get('id') || '';
+  document.getElementById('aabn').href = 'miingle://o' + (id ? '?id=' + encodeURIComponent(id) : '');
+  var APPSTORE = 'https://apps.apple.com/dk/app/id6815775567';
+  fetch('https://uvnxbxawydlarjdpubww.supabase.co/rest/v1/app_indstillinger?noegle=eq.app_er_live&select=vaerdi', {
+    headers: { apikey: 'sb_publishable_cExzzcc7jQ4uH7QN7wZkew_-0coaB-b', Authorization: 'Bearer sb_publishable_cExzzcc7jQ4uH7QN7wZkew_-0coaB-b' }
+  }).then(function (r) { return r.json(); }).then(function (d) {
+    if (d && d[0] && d[0].vaerdi === 'ja') {
+      var k = document.getElementById('hent'); k.href = APPSTORE; k.textContent = 'Hent Miingle i App Store';
+      location.replace(APPSTORE);
+    } else {
+      document.getElementById('tekst').textContent += ' Miingle lanceres 1. februar 2027 – skriv dig op på ventelisten, så får du besked.';
+    }
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

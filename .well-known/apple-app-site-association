@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "M9JC32CN6J.com.lindh2005.miingle",
+        "appIDs": ["M9JC32CN6J.com.lindh2005.miingle"],
+        "paths": ["/a", "/a/", "/o", "/o/"],
+        "components": [
+          { "/": "/a" }, { "/": "/a/" },
+          { "/": "/o" }, { "/": "/o/" }
+        ]
+      }
+    ]
+  }
+}
