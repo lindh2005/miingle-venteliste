@@ -664,7 +664,7 @@
     var LANCERET = false;
     // ── Ventelisten er midlertidigt lukket for nye tilmeldinger (18/10-2026).
     // Sæt til true for at åbne igen – og sæt app_indstillinger.venteliste_aaben = 'ja' i Supabase.
-    var VENTELISTE_AABEN = false;
+    var VENTELISTE_AABEN = true;
     if (!VENTELISTE_AABEN && !LANCERET) {
       document.getElementById('venteliste-form').hidden = true;
       var m = document.getElementById('melding');
