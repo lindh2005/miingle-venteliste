@@ -805,7 +805,7 @@
           return res.json().catch(function () { return {}; });
         })
         .then(function (json) {
-          visMelding('Tak! Du er på ventelisten. Tjek din indbakke og bekræft din email ✉️ — så kan du deltage i lodtrækningen, når appen lancerer.', 'success');
+          visMelding('Næsten færdig! 📩 Husk at bekræfte din email: Tjek din indbakke og klik på "Bekræft min email" — først så er din plads på ventelisten sikret, og du kan deltage i lodtrækningen. Kan du ikke finde mailen, så kig i spam eller reklamer.', 'success');
           skjulFormular();
           if (json && json.referral_link) {
             delLink = json.referral_link;
